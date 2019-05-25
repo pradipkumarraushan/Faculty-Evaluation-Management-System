@@ -1,0 +1,33 @@
+.headName {
+	font-family: Comic Sans MS;
+	font-size: 24px;
+	margin: 12px;
+	text-align: center;
+}
+.bar {
+	padding: 10px;
+	text-align: center;
+}
+ul.data-ctrl {
+	list-style: outside none none;
+	margin: 0 auto;
+	max-width: 500px;
+	padding-left: 0;
+	text-align: center;
+	text-decoration: none;
+}
+input.search {
+	border: 2px solid #1fa67a;
+	font-size: 16px;
+	height: 35px;
+	text-align: center;
+	width: 280px;
+}
+.data-ctrl li {
+	background-color: #1fa67a;
+	border-radius: 3px;
+	color: #ffffff;
+	font-size: 17px;
+	height: 25px;
+	padding: 0;
+}

@@ -1,0 +1,36 @@
+//Sum of  first column of academic 
+  $(document).on("input", ".cl1", function() {
+  	
+        var sum = 0;
+        $(".cl1").each(function(){
+            sum += +$(this).val();
+        });
+        $(".totalcl1").val(sum);
+
+    });
+//Sum Of Second Column Of Academic
+$(document).on("input", ".cl2", function() {
+        var sum = 0;
+        $(".cl2").each(function(){
+            sum += +$(this).val();
+        });
+        $(".totalcl2").val(sum);
+    });
+// third
+
+ $(document).on("input", ".cl3", function() {
+        var sum = 0;
+        $(".cl3").each(function(){
+            sum += +$(this).val();
+        });
+        $(".totalcl3").val(sum);
+    });
+ // Fourth
+ $(document).on("input", ".cl4", function() {
+        var sum = 0;
+        $(".cl4").each(function(){
+            sum += +$(this).val();
+        });
+        $(".totalcl4").val(sum);
+    });
+ // TOTAL 
