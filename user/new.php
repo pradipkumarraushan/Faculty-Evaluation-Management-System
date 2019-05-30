@@ -52,7 +52,7 @@ if($r==true)
 
 	    if ($imageName!="" ) {
 	    	$query="UPDATE facultyeval
-               set  email_id = '$email_id' ,criteria_id = '$criteria_id',particular_id = '$particular_id',actual_score = '$actual_score',reduced_score = '$reduced_score',weightage_value = '$weightage_value',wx = '$wx',image = '$imageName' WHERE particular_id = '$particular_id' and fk_userid = '$fk_userid'  ";
+               set  email_id = '$email_id' ,criteria_id = '$criteria_id',particular_id = '$particular_id',actual_score = '$actual_score',reduced_score = '$reduced_score',weightage_value = '$weightage_value',wx = '$wx',image = '$imageName' WHERE particular_id = '$particular_id' and email_id = '$email_id'  ";
 
 
 
