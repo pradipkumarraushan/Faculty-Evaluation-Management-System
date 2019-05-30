@@ -1,5 +1,5 @@
 # Faculty-Evaluation-Management-System  
-DEMO - https://pradip-github.000webhostapp.com/index.php
+DEMO - http://pradip-github.epizy.com/index.php
 
 (you can check the email registration feature by doing signup . you will receive an email after successful registration.)
 
