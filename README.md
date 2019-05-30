@@ -1,6 +1,8 @@
 # Faculty-Evaluation-Management-System  
 DEMO - https://pradip-github.000webhostapp.com/index.php
+
 (you can check the email registration feature by signup . you will receive an email after successful registration.)
+
 (you can also check the forgot/reset password feature through the login page by clicking on the forgot password , you will receive an email regarding forgot password , follow the link to change your password )
 
 1.Install XAMPP
