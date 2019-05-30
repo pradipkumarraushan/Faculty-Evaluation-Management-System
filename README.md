@@ -9,7 +9,7 @@ DEMO - http://pradip-github.epizy.com/index.php
 
 Follow these steps for running XAMPP:
 
-Double-click on the new XAMPP Control Desktop shortcut or Use the Search feature in Windows 10 to find the XAMPP Control App, which opens up the XAMPP Control Panel Application. There you will see a column of "Start" buttons. Select the ones for MySQL and for Apache...you should now see a green "Running" indicator
+Double-click on the new XAMPP Control Desktop shortcut or Use the Search feature in Windows to find the XAMPP Control App, which opens up the XAMPP Control Panel Application. There you will see a column of "Start" buttons. Select the ones for MySQL and for Apache...you should now see a green "Running" indicator
 
 Download link - https://www.apachefriends.org/download.html
 
