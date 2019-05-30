@@ -12,7 +12,7 @@ $dob=$yy."-".$mm."-".$dd;
 //branch
 $branch=implode(",",$branch);
 
-$query="update user set name='$n',mobile='$mob',gender='$gen',branch='$branch',dob='$dob',empid='$empid' where email='".$_SESSION['user']."'";
+$query="UPDATE user set name='$n',mobile='$mob',gender='$gen',branch='$branch',dob='$dob',empid='$empid' where email='".$_SESSION['user']."'";
 
 
 mysqli_query($conn,$query);

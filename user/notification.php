@@ -5,11 +5,11 @@ if(!isset($_SESSION["user"])){
   header('Location: login_view.php');
   die();
 }
-$q=mysqli_query($conn,"select * from notice where user='".$_SESSION['user']."'");
+$q=mysqli_query($conn,"SELECT * from notice where user='".$_SESSION['user']."'");
 $rr=mysqli_num_rows($q);
 if(!$rr)
 {
-echo "<h2  align='center' style='color:red'>No any notification for You !!!</h2>";
+echo "<h2  align='center' style='color:red'>No any notification for You !!!</h2><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>";
 }
 else
 {

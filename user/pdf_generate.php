@@ -109,7 +109,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
       <table width="100%"  bgcolor="white">
          <tr>
             <th colspan="100%">
-               <img src="./dompdf/sdmcet.jpg" class="center" width="100" height="130" alt="sdmcet_Logo" /><br>
+               <img src="./newdompdf/sdmcet.jpg" class="center" width="100" height="130" alt="sdmcet_Logo" /><br>
                   <font class="l1" >SDM COLLEGE OF ENGINEERING & TECHNOLOGY (AUTONOMOUS),DHARWAD</font>
                </th>
             </tr>
@@ -161,34 +161,34 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                   <tr >
                      <td>'.$_POST['pid_1'].'</td>
                      <td>'.$_POST['1r1'].'</td>
-                     <td>'.$_POST['column1_1_1'].'</td>
-                     <td>'.$_POST['column2_1_1'].'</td>
-                     <td>'.$_POST['column3_1_1'].'</td>
-                     <td>'.$_POST['column4_1_1'].'</td>
+                     <td>'.$_POST['actualscore_1_1'].'</td>
+                     <td>'.$_POST['reduced_score_1_1'].'</td>
+                     <td>'.$_POST['weightage_value_1_1'].'</td>
+                     <td>'.$_POST['wx_1_1'].'</td>
                   </tr>
                   <tr >
                      <td>'.$_POST['pid_2'].'</td>
                      <td>'.$_POST['1r2'].'</td>
-                     <td>'.$_POST['column1_1_2'].'</td>
-                     <td>'.$_POST['column2_1_2'].'</td>
-                     <td>'.$_POST['column3_1_2'].'</td>
-                     <td>'.$_POST['column4_1_2'].'</td>
+                     <td>'.$_POST['actualscore_1_2'].'</td>
+                     <td>'.$_POST['reduced_score_1_2'].'</td>
+                     <td>'.$_POST['weightage_value_1_2'].'</td>
+                     <td>'.$_POST['wx_1_2'].'</td>
                   </tr>
                   <tr >
                      <td>'.$_POST['pid_3'].'</td>
                      <td>'.$_POST['1r3'].'</td>
-                     <td>'.$_POST['column1_1_3'].'</td>
-                     <td>'.$_POST['column2_1_3'].'</td>
-                     <td>'.$_POST['column3_1_3'].'</td>
-                     <td>'.$_POST['column4_1_3'].'</td>
+                     <td>'.$_POST['actualscore_1_3'].'</td>
+                     <td>'.$_POST['reduced_score_1_3'].'</td>
+                     <td>'.$_POST['weightage_value_1_3'].'</td>
+                     <td>'.$_POST['wx_1_3'].'</td>
                   </tr>
                   <tr >
                      <td>'.$_POST['pid_4'].'</td>
                      <td>'.$_POST['1r4'].'</td>
-                     <td>'.$_POST['column1_1_4'].'</td>
-                     <td>'.$_POST['column2_1_4'].'</td>
-                     <td>'.$_POST['column3_1_4'].'</td>
-                     <td>'.$_POST['column4_1_4'].'</td>
+                     <td>'.$_POST['actualscore_1_4'].'</td>
+                     <td>'.$_POST['reduced_score_1_4'].'</td>
+                     <td>'.$_POST['weightage_value_1_4'].'</td>
+                     <td>'.$_POST['wx_1_4'].'</td>
                   </tr>
                </tbody>
                <tfoot>
@@ -200,7 +200,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                         <font class="symbol">&Sigma;</font> W = '.$_POST['sum_weightage_1'].'
                      </td>
                      <td>
-                        <font class="symbol">&Sigma;</font>WX = '.$_POST['wx_1'].'
+                        <font class="symbol">&Sigma;</font>WX = '.$_POST['sum_wx_1'].'
                      </td>
                   </tr>
                   <tr>
@@ -231,6 +231,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
   </tr>
 </table>
             <div style="page-break-before: always;"></div>
+
             <table style="width:100%">
                <tr >
                   <th colspan="6" bgcolor="#5D7B9D">
@@ -248,50 +249,50 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                <tr >
                   <td>'.$_POST['pid_5'].'</td>
                   <td>'.$_POST['2r5'].'</td>
-                  <td>'.$_POST['column1_2_5'].'</td>
-                  <td>'.$_POST['column2_2_5'].'</td>
-                  <td>'.$_POST['column3_2_5'].'</td>
-                  <td>'.$_POST['column4_2_5'].'</td>
+                  <td>'.$_POST['actualscore_2_5'].'</td>
+                  <td>'.$_POST['reduced_score_2_5'].'</td>
+                  <td>'.$_POST['weightage_value_2_5'].'</td>
+                  <td>'.$_POST['wx_2_5'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_6'].'</td>
                   <td>'.$_POST['2r6'].'</td>
-                  <td>'.$_POST['column1_2_6'].'</td>
-                  <td>'.$_POST['column2_2_6'].'</td>
-                  <td>'.$_POST['column3_2_6'].'</td>
-                  <td>'.$_POST['column4_2_6'].'</td>
+                  <td>'.$_POST['actualscore_2_6'].'</td>
+                  <td>'.$_POST['reduced_score_2_6'].'</td>
+                  <td>'.$_POST['weightage_value_2_6'].'</td>
+                  <td>'.$_POST['wx_2_6'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_7'].'</td>
                   <td>'.$_POST['2r7'].'</td>
-                  <td>'.$_POST['column1_2_7'].'</td>
-                  <td>'.$_POST['column2_2_7'].'</td>
-                  <td>'.$_POST['column3_2_7'].'</td>
-                  <td>'.$_POST['column4_2_7'].'</td>
+                  <td>'.$_POST['actualscore_2_7'].'</td>
+                  <td>'.$_POST['reduced_score_2_7'].'</td>
+                  <td>'.$_POST['weightage_value_2_7'].'</td>
+                  <td>'.$_POST['wx_2_7'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_8'].'</td>
                   <td>'.$_POST['2r8'].'</td>
-                  <td>'.$_POST['column1_2_8'].'</td>
-                  <td>'.$_POST['column2_2_8'].'</td>
-                  <td>'.$_POST['column3_2_8'].'</td>
-                  <td>'.$_POST['column4_2_8'].'</td>
+                  <td>'.$_POST['actualscore_2_8'].'</td>
+                  <td>'.$_POST['reduced_score_2_8'].'</td>
+                  <td>'.$_POST['weightage_value_2_8'].'</td>
+                  <td>'.$_POST['wx_2_8'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_9'].'</td>
                   <td>'.$_POST['2r9'].'</td>
-                  <td>'.$_POST['column1_2_9'].'</td>
-                  <td>'.$_POST['column2_2_9'].'</td>
-                  <td>'.$_POST['column3_2_9'].'</td>
-                  <td>'.$_POST['column4_2_9'].'</td>
+                  <td>'.$_POST['actualscore_2_9'].'</td>
+                  <td>'.$_POST['reduced_score_2_9'].'</td>
+                  <td>'.$_POST['weightage_value_2_9'].'</td>
+                  <td>'.$_POST['wx_2_9'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_10'].'</td>
                   <td>'.$_POST['2r10'].'</td>
-                  <td>'.$_POST['column1_2_10'].'</td>
-                  <td>'.$_POST['column2_2_10'].'</td>
-                  <td>'.$_POST['column3_2_10'].'</td>
-                  <td>'.$_POST['column4_2_10'].'</td>
+                  <td>'.$_POST['actualscore_2_10'].'</td>
+                  <td>'.$_POST['reduced_score_2_10'].'</td>
+                  <td>'.$_POST['weightage_value_2_10'].'</td>
+                  <td>'.$_POST['wx_2_10'].'</td>
                </tr>
                <tfoot>
                   <tr>
@@ -302,7 +303,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                         <font class="symbol">&Sigma;</font> W = '.$_POST['sum_weightage_2'].'
                      </td>
                      <td>
-                        <font class="symbol">&Sigma;</font>WX = '.$_POST['wx_2'].'
+                        <font class="symbol">&Sigma;</font>WX = '.$_POST['sum_wx_2'].'
                      </td>
                   </tr>
                   <tr>
@@ -331,7 +332,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
      <th style="width:100px;height:100px;border:2px solid black"><font class="l8">2 - 10</font><br><img  src="'.$_POST['image_2_10'].'"  width="355" height="405"></th>
   </tr>
 </table>
-            <div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
             <table style="width:100%">
                <tr >
                   <th colspan="6" bgcolor="#5D7B9D">
@@ -349,42 +350,42 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                <tr >
                   <td>'.$_POST['pid_11'].'</td>
                   <td>'.$_POST['3r11'].'</td>
-                  <td>'.$_POST['column1_3_11'].'</td>
-                  <td>'.$_POST['column2_3_11'].'</td>
-                  <td>'.$_POST['column3_3_11'].'</td>
-                  <td>'.$_POST['column4_3_11'].'</td>
+                  <td>'.$_POST['actualscore_3_11'].'</td>
+                  <td>'.$_POST['reduced_score_3_11'].'</td>
+                  <td>'.$_POST['weightage_value_3_11'].'</td>
+                  <td>'.$_POST['wx_3_11'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_12'].'</td>
                   <td>'.$_POST['3r12'].'</td>
-                  <td>'.$_POST['column1_3_12'].'</td>
-                  <td>'.$_POST['column2_3_12'].'</td>
-                  <td>'.$_POST['column3_3_12'].'</td>
-                  <td>'.$_POST['column4_3_12'].'</td>
+                  <td>'.$_POST['actualscore_3_12'].'</td>
+                  <td>'.$_POST['reduced_score_3_12'].'</td>
+                  <td>'.$_POST['weightage_value_3_12'].'</td>
+                  <td>'.$_POST['wx_3_12'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_13'].'</td>
                   <td>'.$_POST['3r13'].'</td>
-                  <td>'.$_POST['column1_3_13'].'</td>
-                  <td>'.$_POST['column2_3_13'].'</td>
-                  <td>'.$_POST['column3_3_13'].'</td>
-                  <td>'.$_POST['column4_3_13'].'</td>
+                  <td>'.$_POST['actualscore_3_13'].'</td>
+                  <td>'.$_POST['reduced_score_3_13'].'</td>
+                  <td>'.$_POST['weightage_value_3_13'].'</td>
+                  <td>'.$_POST['wx_3_13'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_14'].'</td>
                   <td>'.$_POST['3r14'].'</td>
-                  <td>'.$_POST['column1_3_14'].'</td>
-                  <td>'.$_POST['column2_3_14'].'</td>
-                  <td>'.$_POST['column3_3_14'].'</td>
-                  <td>'.$_POST['column4_3_14'].'</td>
+                  <td>'.$_POST['actualscore_3_14'].'</td>
+                  <td>'.$_POST['reduced_score_3_14'].'</td>
+                  <td>'.$_POST['weightage_value_3_14'].'</td>
+                  <td>'.$_POST['wx_3_14'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_15'].'</td>
                   <td>'.$_POST['3r15'].'</td>
-                  <td>'.$_POST['column1_3_15'].'</td>
-                  <td>'.$_POST['column2_3_15'].'</td>
-                  <td>'.$_POST['column3_3_15'].'</td>
-                  <td>'.$_POST['column4_3_15'].'</td>
+                  <td>'.$_POST['actualscore_3_15'].'</td>
+                  <td>'.$_POST['reduced_score_3_15'].'</td>
+                  <td>'.$_POST['weightage_value_3_15'].'</td>
+                  <td>'.$_POST['wx_3_15'].'</td>
                </tr>
                <tfoot>
                   <tr>
@@ -395,7 +396,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                         <font class="symbol">&Sigma;</font>W = '.$_POST['sum_weightage_3'].'
                      </td>
                      <td>
-                        <font class="symbol">&Sigma;</font>WX = '.$_POST['wx_3'].'
+                        <font class="symbol">&Sigma;</font>WX = '.$_POST['sum_wx_3'].'
                      </td>
                   </tr>
                   <tr>
@@ -424,7 +425,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
    <th style="width:100px;height:100px;border:2px solid black"><font class="l8"></font><br><img  src=""  width="355" height="405" ></th>
   </tr>
 </table>
-            <div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
             <table style="width:100%">
                <tr >
                   <th colspan="6" bgcolor="#5D7B9D">
@@ -442,34 +443,34 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                <tr >
                   <td>'.$_POST['pid_16'].'</td>
                   <td>'.$_POST['4r16'].'</td>
-                  <td>'.$_POST['column1_4_16'].'</td>
-                  <td>'.$_POST['column2_4_16'].'</td>
-                  <td>'.$_POST['column3_4_16'].'</td>
-                  <td>'.$_POST['column4_4_16'].'</td>
+                  <td>'.$_POST['actualscore_4_16'].'</td>
+                  <td>'.$_POST['reduced_score_4_16'].'</td>
+                  <td>'.$_POST['weightage_value_4_16'].'</td>
+                  <td>'.$_POST['wx_4_16'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_17'].'</td>
                   <td>'.$_POST['4r17'].'</td>
-                  <td>'.$_POST['column1_4_17'].'</td>
-                  <td>'.$_POST['column2_4_17'].'</td>
-                  <td>'.$_POST['column3_4_17'].'</td>
-                  <td>'.$_POST['column4_4_17'].'</td>
+                  <td>'.$_POST['actualscore_4_17'].'</td>
+                  <td>'.$_POST['reduced_score_4_17'].'</td>
+                  <td>'.$_POST['weightage_value_4_17'].'</td>
+                  <td>'.$_POST['wx_4_17'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_18'].'</td>
                   <td>'.$_POST['4r18'].'</td>
-                  <td>'.$_POST['column1_4_18'].'</td>
-                  <td>'.$_POST['column2_4_18'].'</td>
-                  <td>'.$_POST['column3_4_18'].'</td>
-                  <td>'.$_POST['column4_4_18'].'</td>
+                  <td>'.$_POST['actualscore_4_18'].'</td>
+                  <td>'.$_POST['reduced_score_4_18'].'</td>
+                  <td>'.$_POST['weightage_value_4_18'].'</td>
+                  <td>'.$_POST['wx_4_18'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_19'].'</td>
                   <td>'.$_POST['4r19'].'</td>
-                  <td>'.$_POST['column1_4_19'].'</td>
-                  <td>'.$_POST['column2_4_19'].'</td>
-                  <td>'.$_POST['column3_4_19'].'</td>
-                  <td>'.$_POST['column4_4_19'].'</td>
+                  <td>'.$_POST['actualscore_4_19'].'</td>
+                  <td>'.$_POST['reduced_score_4_19'].'</td>
+                  <td>'.$_POST['weightage_value_4_19'].'</td>
+                  <td>'.$_POST['wx_4_19'].'</td>
                </tr>
                <tfoot>
                   <tr>
@@ -480,7 +481,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                         <font class="symbol">&Sigma;</font>W ='.$_POST['sum_weightage_4'].'
                      </td>
                      <td>
-                        <font class="symbol">&Sigma;</font>WX ='.$_POST['wx_4'].'
+                        <font class="symbol">&Sigma;</font>WX ='.$_POST['sum_wx_4'].'
                      </td>
                   </tr>
                   <tr>
@@ -523,50 +524,50 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                <tr >
                   <td>'.$_POST['pid_20'].'</td>
                   <td>'.$_POST['5r20'].'</td>
-                  <td>'.$_POST['column1_5_20'].'</td>
-                  <td>'.$_POST['column2_5_20'].'</td>
-                  <td>'.$_POST['column3_5_20'].'</td>
-                  <td>'.$_POST['column4_5_20'].'</td>
+                  <td>'.$_POST['actualscore_5_20'].'</td>
+                  <td>'.$_POST['reduced_score_5_20'].'</td>
+                  <td>'.$_POST['weightage_value_5_20'].'</td>
+                  <td>'.$_POST['wx_5_20'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_21'].'</td>
                   <td>'.$_POST['5r21'].'</td>
-                  <td>'.$_POST['column1_5_21'].'</td>
-                  <td>'.$_POST['column2_5_21'].'</td>
-                  <td>'.$_POST['column3_5_21'].'</td>
-                  <td>'.$_POST['column4_5_21'].'</td>
+                  <td>'.$_POST['actualscore_5_21'].'</td>
+                  <td>'.$_POST['reduced_score_5_21'].'</td>
+                  <td>'.$_POST['weightage_value_5_21'].'</td>
+                  <td>'.$_POST['wx_5_21'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_22'].'</td>
                   <td>'.$_POST['5r22'].'</td>
-                  <td>'.$_POST['column1_5_22'].'</td>
-                  <td>'.$_POST['column2_5_22'].'</td>
-                  <td>'.$_POST['column3_5_22'].'</td>
-                  <td>'.$_POST['column4_5_22'].'</td>
+                  <td>'.$_POST['actualscore_5_22'].'</td>
+                  <td>'.$_POST['reduced_score_5_22'].'</td>
+                  <td>'.$_POST['weightage_value_5_22'].'</td>
+                  <td>'.$_POST['wx_5_22'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_23'].'</td>
                   <td>'.$_POST['5r23'].'</td>
-                  <td>'.$_POST['column1_5_23'].'</td>
-                  <td>'.$_POST['column2_5_23'].'</td>
-                  <td>'.$_POST['column3_5_23'].'</td>
-                  <td>'.$_POST['column4_5_23'].'</td>
+                  <td>'.$_POST['actualscore_5_23'].'</td>
+                  <td>'.$_POST['reduced_score_5_23'].'</td>
+                  <td>'.$_POST['weightage_value_5_23'].'</td>
+                  <td>'.$_POST['wx_5_23'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_24'].'</td>
                   <td>'.$_POST['5r24'].'</td>
-                  <td>'.$_POST['column1_5_24'].'</td>
-                  <td>'.$_POST['column2_5_24'].'</td>
-                  <td>'.$_POST['column3_5_24'].'</td>
-                  <td>'.$_POST['column4_5_24'].'</td>
+                  <td>'.$_POST['actualscore_5_24'].'</td>
+                  <td>'.$_POST['reduced_score_5_24'].'</td>
+                  <td>'.$_POST['weightage_value_5_24'].'</td>
+                  <td>'.$_POST['wx_5_24'].'</td>
                </tr>
                <tr >
                   <td>'.$_POST['pid_25'].'</td>
                   <td>'.$_POST['5r25'].'</td>
-                  <td>'.$_POST['column1_5_25'].'</td>
-                  <td>'.$_POST['column2_5_25'].'</td>
-                  <td>'.$_POST['column3_5_25'].'</td>
-                  <td>'.$_POST['column4_5_25'].'</td>
+                  <td>'.$_POST['actualscore_5_25'].'</td>
+                  <td>'.$_POST['reduced_score_5_25'].'</td>
+                  <td>'.$_POST['weightage_value_5_25'].'</td>
+                  <td>'.$_POST['wx_5_25'].'</td>
                </tr>
                <tfoot>
                   <tr>
@@ -577,7 +578,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                         <font class="symbol">&Sigma;</font>W = '.$_POST['sum_weightage_5'].'
                      </td>
                      <td>
-                        <font class="symbol">&Sigma;</font>WX = '.$_POST['wx_5'].'
+                        <font class="symbol">&Sigma;</font>WX = '.$_POST['sum_wx_5'].'
                      </td>
                   </tr>
                   <tr>
@@ -606,7 +607,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
      <th style="width:100px;height:100px;border:2px solid black"><font class="l8">5 - 25</font><br><img  src="'.$_POST['image_5_25'].'"  width="355" height="405"></th>
   </tr>
 </table>
-            <div style="page-break-before: always;"></div>
+<div style="page-break-before: always;"></div>
             <table style="width:100%">
                <tr >
                   <th colspan="6" bgcolor="#5D7B9D">
@@ -624,10 +625,10 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                <tr >
                   <td>'.$_POST['pid_26'].'</td>
                   <td>'.$_POST['6r26'].'</td>
-                  <td>'.$_POST['column1_6_26'].'</td>
-                  <td>'.$_POST['column2_6_26'].'</td>
-                  <td>'.$_POST['column3_6_26'].'</td>
-                  <td>'.$_POST['column4_6_26'].'</td>
+                  <td>'.$_POST['actualscore_6_26'].'</td>
+                  <td>'.$_POST['reduced_score_6_26'].'</td>
+                  <td>'.$_POST['weightage_value_6_26'].'</td>
+                  <td>'.$_POST['wx_6_26'].'</td>
                </tr>
                <tfoot>
                   <tr>
@@ -638,7 +639,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
                         <font class="symbol">&Sigma;</font>W = '.$_POST['sum_weightage_6'].'
                      </td>
                      <td>
-                        <font class="symbol">&Sigma;</font>WX = '.$_POST['wx_6'].'
+                        <font class="symbol">&Sigma;</font>WX = '.$_POST['sum_wx_6'].'
                      </td>
                   </tr>
                   <tr>
@@ -661,6 +662,7 @@ p { color: blue; font-family:"Times-Roman", serif; font-style: normal; text-deco
   
  
 </table>
+  
             <div style="page-break-before: always;"></div>
 
 

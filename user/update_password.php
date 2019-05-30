@@ -80,4 +80,5 @@ $err="<font color='red'>Wrong Old Password </font>";
 		<input type="reset" class="btn btn-success"/>
 		</div>
 	</div>
-</form>	
+</form>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -11,7 +11,7 @@ if(isset($update))
 $img=$_FILES['f']['name'];
 echo $img; 
 
-$query="update user set image='$img' where email='".$_SESSION['user']."'";
+$query="UPDATE user set image='$img' where email='".$_SESSION['user']."'";
 mysqli_query($conn,$query);
 
 move_uploaded_file($_FILES['f']['tmp_name'],"../images/$user/".$_FILES['f']['name']);
@@ -50,4 +50,4 @@ $res=mysqli_fetch_assoc($sql);
 				</tr>
 			</table>
 		</form>
-	
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

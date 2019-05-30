@@ -116,7 +116,7 @@ FROM particular P
 LEFT  JOIN weightage W 
 ON P.particular_id=W.particular_id and P.criteria_id=W.criteria_id 
 LEFT JOIN  facultyeval F
-ON P.particular_id=F.particular_id and P.criteria_id=F.criteria_id  and F.fk_userid= '" .$users['id'] . "' 
+ON P.particular_id=F.particular_id and P.criteria_id=F.criteria_id  and F.email_id= '" .$users['email'] . "' 
 where P.criteria_id = '" . $row["criteria_id"] . "'   ");
 
    
@@ -155,11 +155,11 @@ where P.criteria_id = '" . $row["criteria_id"] . "'   ");
 
                                                         <td style="padding-top: 20pt; text-indent: 0pt;text-align: center;">
     <input value="<?php
-        echo $row1["actual_score"]; ?>" class="" type="number" name="column1_<?php
+        echo $row1["actual_score"]; ?>" class="" type="number" name="actualscore_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" min="0" max="100" id="column1_<?php
+        echo $row1["particular_id"]; ?>" min="0" max="100" id="actualscore_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" readonly style="border:none"  oninput="calculate1()">
+        echo $row1["particular_id"]; ?>" readonly style="border:none" >
                                                     
                                                             
                                                         </td>
@@ -169,28 +169,28 @@ where P.criteria_id = '" . $row["criteria_id"] . "'   ");
 
 
 <input value="<?php
-        echo $row1["reduced_score"]; ?>" class="out0f_10 " id="column2_<?php
+        echo $row1["reduced_score"]; ?>" class="out0f_10 " id="reduced_score_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" type="number" name="column2_<?php
+        echo $row1["particular_id"]; ?>" type="number" name="reduced_score_<?php
         echo $row["criteria_id"]; ?>_<?php
         echo $row1["particular_id"]; ?>" min="0" max="10" readonly style="border:none; "  />
                                                         </td>
 <!-- ==============================================Displaying weightage Value ========================================= -->
                                                         <td style="padding-top: 20pt; padding-left: -250pt;padding-right: -100pt;text-indent: 0pt;text-align: center; ">
     <input value="<?php
-        echo $row1["weightage_value"]; ?>" class="weightage_value" id="column3_<?php
+        echo $row1["weightage_value"]; ?>" class="weightage_value" id="weightage_value_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" type= "number" name ="column3_<?php
+        echo $row1["particular_id"]; ?>" type= "number" name ="weightage_value_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>"  min="0" max="100" readonly style="border:none"  oninput="calculate2()"  />
+        echo $row1["particular_id"]; ?>"  min="0" max="100" readonly style="border:none"  />
                                                         </td>
 <!-- ==============================================Displaying     WX   Value ========================================= -->
                                                         <td style="padding-top: 20pt; text-indent: 0pt;text-align: right; ">
 
 <input value="<?php
-        echo $row1["wx"]; ?>" class="wx" id="column4_<?php
+        echo $row1["wx"]; ?>" class="wx" id="wx_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" type= "number" name ="column4_<?php
+        echo $row1["particular_id"]; ?>" type= "number" name ="wx_<?php
         echo $row["criteria_id"]; ?>_<?php
         echo $row1["particular_id"]; ?>" readonly style="border:none"/>
                                                         </td>
@@ -391,10 +391,10 @@ span.onclick = function() {
                                                     </td>
                                                     <td >
                                                         <b>∑WX=
-<input value="wx_<?php
-    echo $row["criteria_id"]; ?>" class="wx_<?php
-    echo $row["criteria_id"]; ?>"  type="number" id="wx_<?php
-    echo $row["criteria_id"]; ?>" name="wx_<?php
+<input value="sum_wx_<?php
+    echo $row["criteria_id"]; ?>" class="sum_wx_<?php
+    echo $row["criteria_id"]; ?>"  type="number" id="sum_wx_<?php
+    echo $row["criteria_id"]; ?>" name="sum_wx_<?php
     echo $row["criteria_id"]; ?>" readonly style="border:none">
                                                         </b>
                                                     </td>

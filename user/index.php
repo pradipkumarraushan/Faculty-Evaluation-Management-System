@@ -7,7 +7,7 @@ if(!isset($_SESSION["user"])){
   die();
 }
 $user= $_SESSION['user'];
-$sql=mysqli_query($conn,"select * from user where email='$user' ");
+$sql=mysqli_query($conn,"SELECT * from user where email='$user' ");
 $users=mysqli_fetch_assoc($sql);
 ?>
 <!DOCTYPE html>
@@ -34,84 +34,78 @@ $users=mysqli_fetch_assoc($sql);
     <script src="../js/jquery1.11.3.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/holder.min.js"></script>
+    <script src="../js/calculation.js"></script>
       
   </head>
 
 <body>
+   <nav class="navbar navbar-inverse navbar-fixed-top" style="background:#000">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="index.php">FACULTY EVALUATION MANAGEMENT SYSTEM</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="index.php?page=Fill_Form">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">MENU<span class="caret"></span></a>
+          <ul class="dropdown-menu" style="width: 500%;height: 700%">
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+            <!-- check users profile image -->
+      <?php 
+      $q=mysqli_query($conn,"select image from user where email='".$_SESSION['user']."'");
+      $row=mysqli_fetch_assoc($q);
+      if($row['image']=="")
+      {
+      ?>
+            <li><a  href="index.php?page=update_profile_pic"><img  title="Update Your profile pic Click here" style="border-radius:60px" src="../images/person.jpg" width="100" height="100" alt="not found"/></a></li>
+      <?php 
+      }
+      else
+      {
+      ?>
+       <li><a title="Click here to Update Your profile Picture " href="index.php?page=update_profile_pic"><img title="Update Your profile pic Click here"  style="border-radius:50px;margin-left: 130px" src="../images/<?php echo $_SESSION['user'];?>/<?php echo $row['image'];?>" width="100" height="100" alt="not found"/></a> </li>
+      <?php 
+      }
+      ?>
+            <li><a href="#"><font size="6%"><?php echo $users['name'];  ?></font></a></li>     
+            <li><a title="Click here to Update Your Profile " href="index.php?page=update_profile"><span class="glyphicon glyphicon-user"></span> Update Profile</a></li>
+            <li><a title="Click here to Update Your Password " href="index.php?page=update_password"><span  class="glyphicon glyphicon-lock"></span> Update Password</a></li>
 
-           <a class="navbar-brand" href="index.php">SDMCET</a>
-          <a title="Click here To Choose Option" class="navbar-brand" style="font-size:20px;cursor:pointer" onclick="openNav()">&#9776; MENU</a>
-
-        </div>
-
-        <div id="navbar" class="navbar-collapse collapse">
-        	 <ul class="nav navbar-nav navbar-left">
-        	 	<li></li>
-        	 	 </ul>
-          <ul class="nav navbar-nav navbar-right">
-           
-            <li><a title="Click here to Logout" style="font-size:20px" href="logout.php">Logout</a></li>
-            
+            <li><a title="Click here to Check Your Notification / Message " href="index.php?page=notification"><span class="glyphicon glyphicon-envelope"></span> Notification / Message</a></li>
+            <li><a title="Click here to Fill out / Update Forrm " href="index.php?page=Fill_Form"><span class="glyphicon glyphicon-pencil"></span> Fill-Out / Update  your form </a></li>
+            <li><a title="Click here to Preview & Generate PDF " href="index.php?page=pdf_preview"><span class="glyphicon glyphicon-print"></span> Preview & Generate PDF </a></li>
           </ul>
-          <!--<form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>-->
-        </div>
-      </div>
-    </nav>
+        </li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       
+        <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+   
 
     
-    <div id="myNav" class="overlay">
-      
-  <a title="Click here to Close MENU"  href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <div class="overlay-content">
-
-          <ul class="nav">
+    
            <!-- <li class="active"><a href="index.php">Dashboard <span class="sr-only">(current)</span></a></li>
              
 			 find users' image if image not found then show dummy image -->
 			
-			<!-- check users profile image -->
-			<?php 
-			$q=mysqli_query($conn,"select image from user where email='".$_SESSION['user']."'");
-			$row=mysqli_fetch_assoc($q);
-			if($row['image']=="")
-			{
-			?>
-            <li><a href="index.php?page=update_profile_pic"><img title="Update Your profile pic Click here" style="border-radius:50px" src="../images/person.jpg" width="100" height="100" alt="not found"/></a></li>
-			<?php 
-			}
-			else
-			{
-			?>
-			<a href="index.php?page=update_profile_pic"><img title="Update Your profile pic Click here"  style="border-radius:50px" src="../images/<?php echo $_SESSION['user'];?>/<?php echo $row['image'];?>" width="100" height="100" alt="not found"/></a>
-			<?php 
-			}
-			?>
-			<a href="#"><font size="15%"><?php echo $users['name'];  ?></font></a>
 			
-			<!--<li><a href="#"><?php echo $users['name'];  ?></a></li> -->
-
-			<a title="Update Your Password Click here" href="index.php?page=update_password"><span  class="glyphicon glyphicon-user"></span> Update Password</a>
-      <a title="Update Your Profile Click here" href="index.php?page=update_profile"><span class="glyphicon glyphicon-user"></span> Update Profile</a>
-			 <a title="check Your Notification Click here" href="index.php?page=notification"><span class="glyphicon glyphicon-envelope"></span> Notification</a>
-       <a title="Fill up Forrm Click here" href="index.php?page=Fill_Form"><span ></span>Fill up your form </a>
-      <a title="Preview & Generate PDF Click here" href="index.php?page=pdf_preview"><span ></span>Preview & Generate PDF </a>
-            
-          </ul>
-         
-         
-        </div></div>
+			
+			
+			 
+       
+      
+      
        
           <!-- container-->
 		  <?php 
@@ -155,70 +149,44 @@ $users=mysqli_fetch_assoc($sql);
         include('new.php');
 		  ?>
 		  <!-- container end-->
-		   
-		  
-		 <!-- <h1 align="center" class="page-header">Dashboard</h1>
-      <marquee direction="left" scrollamount="7"  onMouseOver="this.stop();" onMouseOut="this.start();"><font color="red" size="+1">WELCOME <?php echo $users['name'];?></font></marquee> -->
 
 		  
 		  
 <?php } ?>
-          
+ <br/>
+
+
+
+<!-- footer-->
+
+
+
+<nav class="navbar navbar-inverse navbar-bottom" style="background:black">
+
+  <div class="container">
+
+  
+
+  <ul class="nav navbar-nav navbar-left">
+
+    <li><a href="http://www.pradip.ml">Developed by  PRADIP KUMAR RAUSHAN</a></li>
+</ul>
+
+<ul class="nav navbar-nav navbar-right">
+
+  <li>
+
+ <a href="">Copyright © 2018 - Faculty Evaluation Management System - All Rights Reserved</a> 
+
+</li>
+
+</ul> 
+
+</div>
+
+</nav>         
    
 
-    <style type="text/css">
-
-.overlay {
-    height: 0%;
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-    overflow-y: hidden;
-    transition: 0.5s;
-}
-
-.overlay-content {
-    position: relative;
-    top: 10%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-}
-
-.overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.overlay a:hover, .overlay a:focus {
-    color: red;
-}
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay {overflow-y: auto;}
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
-</style>
 <script src="//static.getclicky.com/js" type="text/javascript"></script>
 <script type="text/javascript">try{ clicky.init(101104855); }catch(e){}</script>
 <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/101104855ns.gif" /></p></noscript>

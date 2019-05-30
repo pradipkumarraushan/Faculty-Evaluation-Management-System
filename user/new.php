@@ -21,7 +21,7 @@ extract($_POST);
 if(isset($submit))
 
 {
-    $fk_userid         = $_POST['fk_userid'];
+    $email_id         = $_POST['email_id'];
 
 	$criteria_id       = $_POST['criteria_id'];
 
@@ -42,7 +42,7 @@ if(isset($submit))
 
 
  
-  $sql=mysqli_query($conn,"select * from facultyeval where particular_id = '$particular_id' and fk_userid = '$fk_userid'  " );
+  $sql=mysqli_query($conn,"SELECT * from facultyeval where particular_id = '$particular_id' and email_id = '$email_id'  " );
 
    $r=mysqli_num_rows($sql);
 
@@ -51,8 +51,8 @@ if($r==true)
         // update  when image is selected
 
 	    if ($imageName!="" ) {
-	    	$query="update facultyeval
-               set  fk_userid = '$fk_userid' ,criteria_id = '$criteria_id',particular_id = '$particular_id',actual_score = '$actual_score',reduced_score = '$reduced_score',weightage_value = '$weightage_value',wx = '$wx',image = '$imageName' WHERE particular_id = '$particular_id' and fk_userid = '$fk_userid'  ";
+	    	$query="UPDATE facultyeval
+               set  email_id = '$email_id' ,criteria_id = '$criteria_id',particular_id = '$particular_id',actual_score = '$actual_score',reduced_score = '$reduced_score',weightage_value = '$weightage_value',wx = '$wx',image = '$imageName' WHERE particular_id = '$particular_id' and fk_userid = '$fk_userid'  ";
 
 
 
@@ -71,8 +71,8 @@ if($r==true)
 	    {
 	    	// update  when image is not selected
           
-          $query="update facultyeval
-               set  fk_userid = '$fk_userid' ,criteria_id = '$criteria_id',particular_id = '$particular_id',actual_score = '$actual_score',reduced_score = '$reduced_score',weightage_value = '$weightage_value',wx = '$wx' WHERE particular_id = '$particular_id' and fk_userid = '$fk_userid'  ";
+          $query="UPDATE facultyeval
+               set  email_id = '$email_id' ,criteria_id = '$criteria_id',particular_id = '$particular_id',actual_score = '$actual_score',reduced_score = '$reduced_score',weightage_value = '$weightage_value',wx = '$wx' WHERE particular_id = '$particular_id' and email_id = '$email_id'  ";
 
 
 
@@ -90,7 +90,7 @@ if($r==true)
 else
 {
         // insert
-	    $query="insert into facultyeval (fk_userid,criteria_id,particular_id,actual_score,reduced_score,weightage_value,wx,image)  values('$fk_userid','$criteria_id','$particular_id','$actual_score','$reduced_score','$weightage_value','$wx','$imageName')";
+	    $query="INSERT into facultyeval (email_id,criteria_id,particular_id,actual_score,reduced_score,weightage_value,wx,image)  values('$email_id','$criteria_id','$particular_id','$actual_score','$reduced_score','$weightage_value','$wx','$imageName')";
         mysqli_query($conn,$query);
 
         // upload image
@@ -111,7 +111,7 @@ else
 
 
  	
-<h1 align="center">Fill Up Your Form</h1>
+<h1 align="center">Fill Out Your Form</h1>
   <!-- ========================================FORM============================================================================== -->             
      
  
@@ -121,9 +121,15 @@ else
 
 			<tr >
 			<td>
-    <?php if(!empty($success_message)) { ?><div align="center" style="font-weight: bold;color:green;font-size: 25px;"><?php echo $success_message ?> </div><?php } ?>
 
-    <?php if(isset($error_message)) { ?> <div align="center" style="font-weight: bold;color:red;font-size: 25px;"><?php echo $error_message; ?></div> <?php } ?>
+                <?php if(!empty($success_message)) { ?><div align="center" style="font-weight: bold;color:green;font-size: 25px;"><?php echo '<script type="text/javascript">alert("' .$success_message . '")</script>'; ?> </div><?php } ?>
+
+               <?php if(!empty($error_message)) { ?><div align="center" style="font-weight: bold;color:red;font-size: 25px;"><?php echo '<script type="text/javascript">alert("' .$error_message . '")</script>'; ?> </div><?php } ?>
+
+<!--
+    <?php if(!empty($success_message)) { ?><div align="center" style="font-weight: bold;color:green;font-size: 25px;"><?php echo $success_message ?> </div><?php } ?> 
+
+    <?php if(isset($error_message)) { ?> <div align="center" style="font-weight: bold;color:red;font-size: 25px;"><?php echo $error_message; ?></div> <?php } ?>  -->
 						</td>
                 </tr>
   <!-- =====================================Printing User's Name And His Branch ================================================= -->
@@ -176,16 +182,16 @@ while ($row = $sqlcriteria->fetch_assoc())
                                         <table class="table-bordered ">
 
                                      <thead bgcolor="#5D7B9D">
-                                            <tr >
+                                            <tr>
 
                                                 <th><font color="#fff">SL No.</font></th>
-                                                <th><font color="#fff">PARTICULARS</font></th>
-                                                <th><font color="#fff">ACTUAL SCORE</font></th>
-                                                <th><font color="#fff">OUT OF 10 (X)</font></th>
-                                                <th><font color="#fff">WEIGHTAGE ( W )</font></th>
-                                                <th><font color="#fff">WX</font></th>
-                                                <th><font color="#fff">IMAGE</font></th>
-                                                <th><font color="#fff">Action</font></th>
+                                                <th style="width: 30%"><font color="#fff">PARTICULARS</font></th>
+                                                <th style="width: 15%"><font color="#fff">ACTUAL SCORE</font></th>
+                                                <th style="width: 10%"><font color="#fff">OUT OF 10 (X)</font></th>
+                                                <th style="width: 15%"><font color="#fff">WEIGHTAGE ( W )</font></th>
+                                                <th style="width: 10%"><font color="#fff">WX</font></th>
+                                                <th style="width: 16%"><font color="#fff">IMAGE</font></th>
+                                                <th style="width: 4%"><font color="#fff">Action</font></th>
                                                 
                                             </tr>
                                         </thead>
@@ -198,7 +204,7 @@ FROM particular P
 LEFT  JOIN weightage W 
 ON P.particular_id=W.particular_id and P.criteria_id=W.criteria_id 
 LEFT JOIN  facultyeval F
-ON P.particular_id=F.particular_id and P.criteria_id=F.criteria_id  and F.fk_userid= '" .$users['id'] . "' 
+ON P.particular_id=F.particular_id and P.criteria_id=F.criteria_id  and F.email_id= '" .$users['email'] . "' 
 where P.criteria_id = '" . $row["criteria_id"] . "'   ");
 
    
@@ -225,7 +231,7 @@ where P.criteria_id = '" . $row["criteria_id"] . "'   ");
 
           <input type="hidden" value="<?php echo  $row1['criteria_id']; ?>" name="criteria_id"/>
  
-          <input type="hidden" value="<?php echo $users['id']; ?>" name="fk_userid"/>
+          <input type="hidden" value="<?php echo $users['email']; ?>" name="email_id"/>
 
           <input type="hidden" value="<?php echo $row1['particular_id']; ?>" name="particular_id"/>
                                                         </td>
@@ -236,26 +242,28 @@ where P.criteria_id = '" . $row["criteria_id"] . "'   ");
     <input value="<?php
         echo $row1["actual_score"]; ?>" class="form-control " type="number" name="actual_score" min="0" max="100" id="actualscore_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" oninput="calculate1()" />
+        echo $row1["particular_id"]; ?>" oninput="actualscore(this)" />
+
+       
                                                     
                                                             
                                                         </td>
 <!-- ==============================================Displaying Reduced Score  ========================================= --> 
                                                         
-                                                        <td  style="padding-top: 20pt; padding-left: -250pt;padding-right: -100pt;text-indent: 0pt;text-align: center; ">
+                                                        <td  style="padding-top: 20pt; padding-left: -250pt; padding-right: -100pt; text-indent: 0pt;text-align: center; ">
 
 
 <input value="<?php
         echo $row1["reduced_score"]; ?>" class="out0f_10 " id="reduced_score_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" type="number" name="reduced_score" min="0" max="10" style="border:none; "  />
+        echo $row1["particular_id"]; ?>" type="number" name="reduced_score"  style="border:none; "  readonly  />
                                                         </td>
 <!-- ==============================================Displaying weightage Value ========================================= -->
                                                         <td style="padding-top: 20pt; padding-left: -250pt;padding-right: -100pt;text-indent: 0pt;text-align: center; ">
     <input value="<?php
         echo $row1["weightage_value"]; ?>" class="weightage_value" id="weightage_value_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" type= "number" name ="weightage_value"  min="0" max="100" readonly style="border:none"  oninput="calculate2()"  />
+        echo $row1["particular_id"]; ?>" type= "number" name ="weightage_value"  min="0" max="100"  style="border:none"  oninput="weightagevalue()"  readonly />
                                                         </td>
 <!-- ==============================================Displaying     WX   Value ========================================= -->
                                                         <td style="padding-top: 20pt; text-indent: 0pt;text-align: right; ">
@@ -263,7 +271,7 @@ where P.criteria_id = '" . $row["criteria_id"] . "'   ");
 <input value="<?php
         echo $row1["wx"]; ?>" class="wx" id="wx_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>" type= "number" name ="wx"  style="border:none"/>
+        echo $row1["particular_id"]; ?>" type= "number" name ="wx"  style="border:none"  readonly />
                                                         </td>
 
 <!-- ==============================================Taking Image ========================================================= -->
@@ -405,7 +413,7 @@ span.onclick = function() {
         echo $row["criteria_id"]; ?>_<?php
         echo $row1["particular_id"]; ?>" type="file" name="image" onchange="validateImage('image_<?php
         echo $row["criteria_id"]; ?>_<?php
-        echo $row1["particular_id"]; ?>')" />   
+        echo $row1["particular_id"]; ?>')" style="width: 50%" />   
 
 
 
@@ -436,45 +444,45 @@ span.onclick = function() {
                                                             <b><font color="#fff">TOTAL</font></b>
 
 
-                                                        </td>
-                                                        <td>
-                                                            <b>A= 
-<input value="sum_actual_score_<?php
+                                                       </td>
+                                                  <td>
+                                                           
+ <b style="color: red">∑= <input value="sum_actual_score_<?php
     echo $row["criteria_id"]; ?>" class="sum_actual_score_<?php
     echo $row["criteria_id"]; ?>" id="sum_actual_score_<?php
     echo $row["criteria_id"]; ?>" type="number" name="sum_actual_score_<?php
-    echo $row["criteria_id"]; ?>" readonly style="border:none">
+    echo $row["criteria_id"]; ?>" readonly style="border:none;width: 100px">
                                                        </b>
                                                         </td>
                                                         <td>
 
 
-                                                        <b>Ave.X= 
+                                                        <b  style="color: red">Ave.X= 
 
 <input value="average_outof_10_<?php
     echo $row["criteria_id"]; ?>" class="average_outof_10_<?php
     echo $row["criteria_id"]; ?>" type="number" id="average_outof_10_<?php
     echo $row["criteria_id"]; ?>" name="average_outof_10_<?php
-    echo $row["criteria_id"]; ?>" readonly style="border:none">
+    echo $row["criteria_id"]; ?>" readonly style="border:none;width: 100px">
                                                         </b>
                                                     </td>
                                                     <td >
-                                                        <b>∑W= 
+                                                        <b  style="color: red">∑W= 
 
 <input value="sum_weightage_<?php
     echo $row["criteria_id"]; ?>" class="sum_weightage_<?php
     echo $row["criteria_id"]; ?>" type="number" id="sum_weightage_<?php
     echo $row["criteria_id"]; ?>" name="sum_weightage_<?php
-    echo $row["criteria_id"]; ?>" readonly style="border:none">
+    echo $row["criteria_id"]; ?>" readonly style="border:none;width: 100px">
                                                       </b>
                                                     </td>
                                                     <td >
-                                                        <b>∑WX=
+                                                        <b  style="color: red">∑WX=
 <input value="sum_wx_<?php
     echo $row["criteria_id"]; ?>" class="sum_wx_<?php
     echo $row["criteria_id"]; ?>"  type="number" id="sum_wx_<?php
     echo $row["criteria_id"]; ?>" name="sum_wx_<?php
-    echo $row["criteria_id"]; ?>" readonly style="border:none">
+    echo $row["criteria_id"]; ?>" readonly style="border:none;width: 100px">
                                                         </b>
                                                     </td>
                                                 </tr>
@@ -521,19 +529,6 @@ function validateImage(id) {
     
     
     var file = document.getElementById(id).files[0];
-
-        /* var imgwidth = 0;
-        var imgheight = 0;
-         var maxwidth = 640;
-         var maxheight = 640;
-    var imgwidth = document.getElementById(id).width;
-    var imgheight = document.getElementById(id).height;
-     +'\n'+"Image size must be "+imgwidth+"X"+imgheight
-     var imgwidth = file.width;
-     var imgheight = file.height; */
-
-
-
     formData.append("Filedata", file);
     var t = file.type.split('/').pop().toLowerCase();
 
@@ -564,4 +559,5 @@ function validateImage(id) {
 </script>
 
 <!-- CLOSE Script for checking image type & size-->
- 
+
+
