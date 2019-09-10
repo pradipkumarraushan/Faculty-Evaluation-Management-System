@@ -230,7 +230,7 @@ session_start();
 
   <li>
 
- <a href="">Copyright © 2018 - Faculty Evaluation Management System - All Rights Reserved</a> 
+ <a href="">Copyright © <script>document.write(new Date().getFullYear());</script> - Faculty Evaluation Management System - All Rights Reserved</a> 
 
 </li>
 
