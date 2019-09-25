@@ -35,3 +35,21 @@ Step 3: Ensure the database was successfully created.
 Step 4: Create table or import database file using import option
 
 4.In your web browser, Type http://localhost/project/index.php You will see the home-page of this PROJECT 
+
+#Some Snapshots :
+
+HomePage:
+
+![Image of HomePage](https://github.com/pradipkumarraushan/Faculty-Evaluation-Management-System/blob/master/Home_page.jpg)
+
+User_Home_page:
+
+![Image of User_Home_page](https://github.com/pradipkumarraushan/Faculty-Evaluation-Management-System/blob/master/User_Home_page.jpg)
+
+Forgot_password_recovery_mail:
+
+![Image of Forgot_password_recovery_mail](https://github.com/pradipkumarraushan/Faculty-Evaluation-Management-System/blob/master/forgot_password_recovery_mail.JPG)
+
+Admin_Features:
+
+![Image of Admin_Features](https://github.com/pradipkumarraushan/Faculty-Evaluation-Management-System/blob/master/Admin_Features.jpg)
