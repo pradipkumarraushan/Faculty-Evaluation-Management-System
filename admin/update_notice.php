@@ -7,14 +7,14 @@ if(!isset($_SESSION['admin'])){
 extract($_POST);
 if(isset($update))
 {
-mysqli_query($conn,"update notice set subject='$sub',Description='$details' where notice_id='".$_GET['notice_id']."'");
+mysqli_query($conn,"UPDATE notice set subject='$sub',Description='$details' where notice_id='".$_GET['notice_id']."'");
 $err="<font color='blue'>Message updated </font>";
 
 }
 
 //select old notice 
 
-$q=mysqli_query($conn,"select * from notice where notice_id='".$_GET['notice_id']."'");
+$q=mysqli_query($conn,"SELECT * from notice where notice_id='".$_GET['notice_id']."'");
 $res=mysqli_fetch_array($q);
 
 ?>

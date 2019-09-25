@@ -26,18 +26,17 @@ $mail = new PHPMailer\PHPMailer\PHPMailer;
 $mail->SMTPDebug = 0;
 //set PHPMailer to use SMTP
 $mail->isSMTP();
+
 //set host name
-$mail->Host = "mail.smtp2go.com";
+$mail->Host = "ENTER HOST ADDRESS";
 // set this true if SMTP host requires authentication to send mail
 $mail->SMTPAuth = true;
 //Provide username & password
-$mail->Username = "email_id";
-$mail->Password = "password";
-$mail->SMTPSecure = "ssl";
-$mail->Port = 465;// Enter  port number 
-
-$mail->From = "Email_id";
-
+$mail->Username = "ENTER YOUR EMAIL ID";
+$mail->Password = "ENTER YOUR PASSWORD";
+$mail->SMTPSecure = "tls";
+$mail->Port = 587;// Enter  port number 
+$mail->From = "ENTER YOUR EMAIL ID";
 $mail->FromName =  " ".$_POST['name']." ";
 
 $mail->addAddress($_POST["email"]); 
@@ -267,13 +266,13 @@ echo '</script>';
                   
                   ?>
                 <?php } ?>
-<table class="table table-dark table-striped col-sm-6 offset-sm-3 text-center " >
+<table class="table table-bordered" >
 	<form method="post" enctype="multipart/form-data" class="form-inlin justify-content-center form-group">
 
 	    <tbody>
       <tr>
-        <td>Time / Date</td>
-        <td><span class="btn btn-info" style="color:white" id="tar"></span></td>
+        <td width="20%">Time / Date</td>
+        <td><span class="btn btn-info" style="color:white;margin-left: 25%" id="tar"></span></td>
         
       </tr>
 
@@ -313,7 +312,7 @@ echo '</script>';
       <tr>
       	<td> </td>
 
-      	<td><input type="submit" value="Send Mail" name="submit" class="btn-success"></td>
+      	<td><input type="submit" value="Send Mail" style="margin-left: 25%" name="submit" class="btn btn-success"></td>
       </tr>
 
     </tbody>

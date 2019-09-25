@@ -1,10 +1,10 @@
 <?php 
 
 include('connection.php');
-$nid=$_GET['id'];
+$email=$_GET['email'];
 
-$q=mysqli_query($conn,"delete from user where id='$nid'");
-
+$q=mysqli_query($conn,"DELETE from user where email='$email'");
+mysqli_query($conn,$q);
 header('location:index.php?page=manage_users');
 
 ?>

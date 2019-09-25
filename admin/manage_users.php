@@ -4,7 +4,7 @@ if(!isset($_SESSION['admin'])){
   header('Location: login_view.php');
   die();
 }
-$q=mysqli_query($conn,"select * from user ");
+$q=mysqli_query($conn,"SELECT * from user ");
 $rr=mysqli_num_rows($q);
 if(!$rr)
 {
@@ -14,11 +14,11 @@ else
 {
 ?>
 <script>
-	function DeleteUser(id)
+	function DeleteUser(email)
 	{
 		if(confirm("You want to delete this record ?"))
 		{
-		window.location.href="delete_user.php?id="+id;
+		window.location.href="delete_user.php?email="+email;
 		}
 	}
 </script>
@@ -114,7 +114,7 @@ echo "<td>".$row['gender']."</td>";
 echo "<td>".$row['last_login']."</td>";
 ?>
 
-<Td><a href="javascript:DeleteUser('<?php echo $row['id']; ?>')" style='color:Red'><span class='glyphicon glyphicon-trash'></span></a></td>
+<Td><a href="javascript:DeleteUser('<?php echo $row['email']; ?>')" style='color:Red'><span class='glyphicon glyphicon-trash'></span></a></td>
 	<?php 
 
 echo "</Tr>";
@@ -123,4 +123,5 @@ $i++;
 		?>
 		
 </table>
-<?php }?>
+<?php }
+?>

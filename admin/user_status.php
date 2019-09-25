@@ -4,7 +4,7 @@ if(!isset($_SESSION['admin'])){
   header('Location: login_view.php');
   die();
 }
-$q=mysqli_query($conn,"select * from user ");
+$q=mysqli_query($conn,"SELECT * from user ");
 $rr=mysqli_num_rows($q);
 if(!$rr)
 {
@@ -14,18 +14,18 @@ else
 {
 ?>
 <script>
-	function AllowUser(id)
+	function AllowUser(email)
 	{
 		if(confirm("You want to update this record ?"))
 		{
-		window.location.href="update_status.php?id="+id;
+		window.location.href="update_status.php?id="+email;
 		}
 	}
-	function BlockUser(id)
+	function BlockUser(email)
 	{
 		if(confirm("You want to update this record ?"))
 		{
-		window.location.href="update_status.php?id1="+id;
+		window.location.href="update_status.php?id1="+email;
 		}
 	}
 </script>
@@ -116,8 +116,8 @@ echo "<td>".$row['branch']."</td>";
 
 ?>
 <Td> <?php echo $row['status']; ?> </td>
-	<Td><a href="javascript:AllowUser('<?php echo $row['id']; ?>')"><span class="btn btn-success">Allow</span></a></td>
-		<Td><a href="javascript:BlockUser('<?php echo $row['id']; ?>')"><span class="btn btn-danger">Block</span></a></td>
+	<Td><a href="javascript:AllowUser('<?php echo $row['email']; ?>')"><span class="btn btn-success">Allow</span></a></td>
+		<Td><a href="javascript:BlockUser('<?php echo $row['email']; ?>')"><span class="btn btn-danger">Block</span></a></td>
 <?php 
 
 echo "</Tr>";

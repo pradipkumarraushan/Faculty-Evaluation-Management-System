@@ -7,7 +7,7 @@ $nid=$_GET['id'];
 
 
 
-$q=mysqli_query($conn,"update user set status = 'allowed' where id='$nid'");
+$q=mysqli_query($conn,"UPDATE user set status = 'allowed' where email='$nid'");
 mysqli_query($conn,$q);
 
 	header('location:index.php?page=user_status');
@@ -19,7 +19,7 @@ $nid=$_GET['id1'];
 
 
 
-$q=mysqli_query($conn,"update user set status = 'blocked' where id='$nid'");
+$q=mysqli_query($conn,"update user set status = 'blocked' where email='$nid'");
 mysqli_query($conn,$q);
 
 	header('location:index.php?page=user_status');

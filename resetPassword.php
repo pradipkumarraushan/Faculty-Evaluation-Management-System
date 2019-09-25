@@ -20,7 +20,7 @@
         {
          $email = mysqli_real_escape_string($conn, $email);
         $id  = mysqli_real_escape_string($conn, $id );
-         $sql=mysqli_query($conn,"select * from user where email='$email' and  forgot_password ='$id'"); //Checking Is user Allowed or not 
+         $sql=mysqli_query($conn,"SELECT * from user where email='$email' and  forgot_password ='$id'"); //Checking Is user Allowed or not 
          $r=mysqli_num_rows($sql);
        if($r==true)
        { 
@@ -32,19 +32,29 @@
         $password = mysqli_real_escape_string($conn,$password);
         $confirmPassword = mysqli_real_escape_string($conn,$confirmPassword);
        
-        if($password == $confirmPassword) 
+        if($password !="" && $confirmPassword !="") // check for null
         {
           
-            $password = md5($password);
-            $sql=mysqli_query($conn,"update user set pass= '$password'  where email= '$email' and forgot_password ='$id' ");
+         	if($password == $confirmPassword)
+         	{
+             
+             $password = md5($password);
+            $sql=mysqli_query($conn,"UPDATE user set pass= '$password'  where email= '$email' and forgot_password ='$id' ");
             $success_message = "Password is updated successfully.<br>Now you are redirecting";
-            $sql=mysqli_query($conn,"update user set forgot_password = '$token'  where email= '$email' ");//After Updating Password changing id to prevent user
+            $sql=mysqli_query($conn,"UPDATE user set forgot_password = '$token'  where email= '$email' ");//After Updating Password changing id to prevent user
             header("Refresh:6; url=index.php"); //Refresh:6;  redirect in 3 sec
+
+         	}
+         	else{
+
+            $error_message = "Failed : Password not updated (confirm Password Mismatch)";
+         	    }
+            
         }
                
            else 
            {
-               $error_message = "Failed : <br> Password not updated *(confirm Password Mismatch)";
+            $error_message = "Failed : Fill all field First";   
            }
           
           }

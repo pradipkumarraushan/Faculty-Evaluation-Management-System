@@ -17,14 +17,14 @@ if(isset($save))
          
         
 
-$sql=mysqli_query($conn,"select * from user where email='$email' and pass='$password' ");//Checking Login Credential
+$sql=mysqli_query($conn,"SELECT * from user where email='$email' and pass='$password' ");//Checking Login Credential
 
 $r=mysqli_num_rows($sql);
 
 if($r==true)
 { 
 
-$sql=mysqli_query($conn,"select * from user where email='$email' and pass='$password' and status='allowed' "); //Checking Is user Allowed or not 
+$sql=mysqli_query($conn,"SELECT * from user where email='$email' and pass='$password' and status='allowed' "); //Checking Is user Allowed or not 
 $r=mysqli_num_rows($sql);
 if($r==true)
 {

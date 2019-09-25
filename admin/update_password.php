@@ -14,7 +14,7 @@ if(isset($save))
 	}
 	else
 	{
-$sql=mysqli_query($conn,"select * from admin where pass='$op'");
+$sql=mysqli_query($conn,"SELECT * from admin where pass='$op'");
 $r=mysqli_num_rows($sql);
 if($r==true)
 {
@@ -22,7 +22,7 @@ if($r==true)
 	if($np==$cp)
 	{
 	
-	$sql=mysqli_query($conn,"update admin set pass='$np' where user='$admin'");
+	$sql=mysqli_query($conn,"UPDATE admin set pass='$np' where user='$admin'");
 	
 	$err="<font color='blue'>Password updated </font>";
 	}

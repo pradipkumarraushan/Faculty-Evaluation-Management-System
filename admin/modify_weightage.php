@@ -8,14 +8,14 @@ if(!isset($_SESSION['admin'])){
 extract($_POST);
 if(isset($Update_W))
 {
-$query="update weightage set weightage_value='$wval' where weightage_id='$wid'";
+$query="UPDATE weightage set weightage_value='$wval' where particular_id='$wid'";
 mysqli_query($conn,$query);
 
 $err="<font color='blue'>Weightage Value updated successfully !!</font>";
 }
 if(isset($Update_P))
 {
-$query="update particular set particular_value='$pval' where particular_id='$pid'";
+$query="UPDATE particular set particular_value='$pval' where particular_id='$pid'";
 mysqli_query($conn,$query);
 
 $err="<font color='blue'> PARTICULARS VALUE RANGE updated successfully !!</font>";
@@ -45,7 +45,7 @@ $err="<font color='blue'> PARTICULARS VALUE RANGE updated successfully !!</font>
 
 <!-- ==================================================for loop of criteria ====================================================== -->
                         <?php
-$sqlcriteria = mysqli_query($conn, "select * from criteria");
+$sqlcriteria = mysqli_query($conn, "SELECT * from criteria");
 
 
 
@@ -64,11 +64,11 @@ while ($row = $sqlcriteria->fetch_assoc())
 
                                      <thead>
                                             <tr>
-                                                 <th>SL No.</th>
-                                                <th>PARTICULARS</th>
-                                                <th>PARTICULARS VALUE RANGE</th>
-                                                <th></th>
-                                                <th>WEIGHTAGE</th>
+                                                <th style="width: 10%">SL No.</th>
+                                                <th style="width: 60%">PARTICULARS</th>
+                                                <!--<th>PARTICULARS VALUE RANGE</th>
+                                                <th></th>  -->
+                                                <th style="width: 20%">WEIGHTAGE</th>
                                                 
                                             </tr>
                                         </thead>
@@ -76,7 +76,7 @@ while ($row = $sqlcriteria->fetch_assoc())
 
                                             <?php
 
-    $sqlpart = mysqli_query($conn, "SELECT  P.particular_id ,P.particular_text,P.particular_value ,P.criteria_id ,C.criteria_name, W.weightage_value,W.weightage_id
+    $sqlpart = mysqli_query($conn, "SELECT  P.particular_id ,P.particular_text,P.particular_value ,P.criteria_id ,C.criteria_name, W.weightage_value
 FROM particular P
 LEFT  JOIN weightage W 
 ON P.particular_id=W.particular_id and P.criteria_id=W.criteria_id 
@@ -98,7 +98,7 @@ where P.criteria_id =  '" . $row["criteria_id"] . "'   ");
                                                         <td style="color: blue">
 
                                                            <b> <?php
-        echo $row1['weightage_id']; ?> </b>
+        echo $row1['particular_id']; ?> </b>
                                                         
                                                         <td >
                                                           
@@ -107,8 +107,9 @@ where P.criteria_id =  '" . $row["criteria_id"] . "'   ");
                   
        
 </td>
+<!--
 <form   method="post">   
-<!-- ==============================================Displaying weightage Value ========================================= -->
+ ==============================================Displaying particular_value =========================================
          <td >
 
          <input value="<?php
@@ -127,7 +128,7 @@ where P.criteria_id =  '" . $row["criteria_id"] . "'   ");
     </td>
 </form>
 
-
+ -->
                                                        
                            
 <form   method="post">
@@ -140,8 +141,8 @@ where P.criteria_id =  '" . $row["criteria_id"] . "'   ");
         echo $row1["weightage_value"]; ?>"  min="0" max="20" type= "number" name ="wval"/>
 
             <input value="<?php
-        echo $row1["weightage_id"]; ?>"  id="<?php
-        echo $row1["weightage_id"]; ?>" type= "number" name ="wid" hidden />  
+        echo $row1["particular_id"]; ?>"  id="<?php
+        echo $row1["particular_id"]; ?>" type= "number" name ="wid" hidden />  
 
          </td>
     <td>

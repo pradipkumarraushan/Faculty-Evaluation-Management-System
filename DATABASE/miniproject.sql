@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2019 at 02:44 PM
+-- Generation Time: Sep 25, 2019 at 04:23 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `user`, `pass`, `last_login`) VALUES
-(1, 'admin@admin.com', 'admin', '2018-04-27 17:37:38');
+(1, 'admin@admin.com', 'admin', '2019-09-25 18:27:12');
 
 -- --------------------------------------------------------
 
@@ -82,16 +82,6 @@ CREATE TABLE `facultyeval` (
   `criteria_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `facultyeval`
---
-
-INSERT INTO `facultyeval` (`email_id`, `actual_score`, `reduced_score`, `weightage_value`, `wx`, `image`, `particular_id`, `criteria_id`) VALUES
-('pradeepraushan@gmail.com', 100, 10, 15, 150, '01.jpg', 1, 1),
-('pradeepraushan@gmail.com', 100, 10, 10, 100, '', 2, 1),
-('pradeepraushan@gmail.com', 100, 10, 10, 100, 'person.jpg', 3, 1),
-('rksharma03225@gmail.com', 0, 0, 10, 0, '', 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -105,13 +95,6 @@ CREATE TABLE `notice` (
   `Description` text NOT NULL,
   `Date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `notice`
---
-
-INSERT INTO `notice` (`notice_id`, `user`, `subject`, `Description`, `Date`) VALUES
-(2, 'pushpakrhegde@gmail.com', 'Registration ', 'Your Registration is successful. ', '2018-04-27 11:12:44');
 
 -- --------------------------------------------------------
 
@@ -178,17 +161,6 @@ CREATE TABLE `user` (
   `forgot_password` varchar(400) NOT NULL,
   `last_login` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`name`, `email`, `empid`, `pass`, `mobile`, `gender`, `branch`, `image`, `dob`, `status`, `forgot_password`, `last_login`) VALUES
-('Pradip Kumar Raushan', 'pradeepraushan@gmail.com', '2SD14CS076', '21232f297a57a5a743894a0e4a801fc3', 9035867192, 'Male', 'CSE', '09.Photo.jpg', '1995-11-23 00:00:00', 'allowed', 'f26eddcd0370a2335770e32c7953a74e', '2018-04-27 17:18:19'),
-('PRADIP KUMAR RAUSHAN', 'pradipkumarraushan@gmail.com', '2SD14CS078', '21232f297a57a5a743894a0e4a801fc3', 9035867192, 'Male', 'CSE', 'person.jpg', '1995-11-23 00:00:00', 'blocked', '9ad19e0842fa8c0dca728060bc086016', '2018-04-27 17:10:27'),
-('Pushpak Hegde', 'pushpakrhegde@gmail.com', '2SD16CS413', 'fe3a81650d7b756e7d2b59ea0406e802', 9742929719, 'Male', 'CSE', 'person.jpg', '1997-01-01 00:00:00', 'allowed', '17fd6190f43f7aedcd3d593140412a2954', '2018-04-27 11:12:54'),
-('Rahul', 'rahuldb2k18@gmail.com', '2SD15CS074', '21232f297a57a5a743894a0e4a801fc3', 8867673087, 'Male', 'CSE', 'person.jpg', '1996-01-01 00:00:00', 'blocked', 'e0c56dc5402f1f23650cc0584875a11dc8', '2018-04-27 11:38:32'),
-('Rohit Kumar', 'rksharma03225@gmail.com', '2SD14CS092', '21232f297a57a5a743894a0e4a801fc3', 9738851325, 'Male', 'CSE', 'Rohit.jpg', '1996-06-15 00:00:00', 'allowed', 'f59ee39aa7b3273de9c91000b22b8cd4', '2018-04-27 11:58:31');
 
 -- --------------------------------------------------------
 

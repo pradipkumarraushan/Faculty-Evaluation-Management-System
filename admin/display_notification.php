@@ -14,7 +14,7 @@ if(!isset($_SESSION['admin'])){
   header('Location: login_view.php');
   die();
  }
-$q=mysqli_query($conn,"select * from notice ");
+$q=mysqli_query($conn,"SELECT * from notice ");
 $rr=mysqli_num_rows($q);
 if(!$rr)
 {
