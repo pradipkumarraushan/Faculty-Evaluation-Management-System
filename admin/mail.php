@@ -1,6 +1,4 @@
 <?php  
-session_start();
-
 include('connection.php');
 
 $admin= $_SESSION['admin'];

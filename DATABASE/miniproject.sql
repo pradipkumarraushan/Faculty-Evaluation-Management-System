@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2018 at 10:32 AM
+-- Generation Time: Sep 25, 2019 at 02:44 PM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.2.0
 
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `user`, `pass`, `last_login`) VALUES
-(1, 'admin@admin.com', 'admin', '2018-04-15 18:24:18');
+(1, 'admin@admin.com', 'admin', '2018-04-27 17:37:38');
 
 -- --------------------------------------------------------
 
@@ -72,8 +72,7 @@ INSERT INTO `criteria` (`criteria_id`, `criteria_name`) VALUES
 --
 
 CREATE TABLE `facultyeval` (
-  `id` int(11) NOT NULL,
-  `fk_userid` bigint(20) NOT NULL,
+  `email_id` varchar(200) NOT NULL,
   `actual_score` float NOT NULL,
   `reduced_score` float NOT NULL,
   `weightage_value` float NOT NULL,
@@ -87,15 +86,11 @@ CREATE TABLE `facultyeval` (
 -- Dumping data for table `facultyeval`
 --
 
-INSERT INTO `facultyeval` (`id`, `fk_userid`, `actual_score`, `reduced_score`, `weightage_value`, `wx`, `image`, `particular_id`, `criteria_id`) VALUES
-(1, 1, 100, 10, 15, 150, '01.jpg', 1, 1),
-(2, 1, 50, 5, 10, 50, '02.jpg', 2, 1),
-(3, 1, 60, 6, 10, 60, '03.jpg', 3, 1),
-(4, 1, 100, 10, 5, 50, '04.jpg', 4, 1),
-(5, 1, 0, 0, 2, 0, '05.jpg', 5, 2),
-(6, 16, 100, 10, 15, 150, '01.jpg', 1, 1),
-(7, 16, 50, 5, 10, 50, '02.jpg', 2, 1),
-(8, 1, 0, 0, 2, 0, '', 8, 2);
+INSERT INTO `facultyeval` (`email_id`, `actual_score`, `reduced_score`, `weightage_value`, `wx`, `image`, `particular_id`, `criteria_id`) VALUES
+('pradeepraushan@gmail.com', 100, 10, 15, 150, '01.jpg', 1, 1),
+('pradeepraushan@gmail.com', 100, 10, 10, 100, '', 2, 1),
+('pradeepraushan@gmail.com', 100, 10, 10, 100, 'person.jpg', 3, 1),
+('rksharma03225@gmail.com', 0, 0, 10, 0, '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -116,7 +111,7 @@ CREATE TABLE `notice` (
 --
 
 INSERT INTO `notice` (`notice_id`, `user`, `subject`, `Description`, `Date`) VALUES
-(1, 'shubhamsisodia907@gmail.com', 'reg', 'reg suc', '2018-02-18 12:26:58');
+(2, 'pushpakrhegde@gmail.com', 'Registration ', 'Your Registration is successful. ', '2018-04-27 11:12:44');
 
 -- --------------------------------------------------------
 
@@ -170,7 +165,6 @@ INSERT INTO `particular` (`particular_id`, `criteria_id`, `particular_text`, `pa
 --
 
 CREATE TABLE `user` (
-  `id` bigint(20) NOT NULL,
   `name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `empid` varchar(200) NOT NULL,
@@ -189,11 +183,12 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `empid`, `pass`, `mobile`, `gender`, `branch`, `image`, `dob`, `status`, `forgot_password`, `last_login`) VALUES
-(1, 'Pradip Kumar Raushan', 'pradeepraushan@gmail.com', '2SD14CS076', '21232f297a57a5a743894a0e4a801fc3', 9035867192, 'Male', 'CSE', '09.Photo.jpg', '1995-11-23 00:00:00', 'allowed', 'ff2e1001f1343b80a038c276efee022b', '2018-04-14 14:09:48'),
-(6, 'Rohit Kumar', 'rohit@k.com', '2SD14CS092', '21232f297a57a5a743894a0e4a801fc3', 9738851325, 'Male', 'CSE', 'Rohit.jpg', '1996-06-15 00:00:00', 'blocked', 'f59ee39aa7b3273de9c91000b22b8cd4', '2018-03-10 01:51:37'),
-(15, 'Shubham', 'shubhamsisodia907@gmail.com', '2sd14me100', '81dc9bdb52d04dc20036dbd8313ed055', 9686012457, 'Male', 'CSE', 'IMG_20170910_165437.jpg', '1996-12-21 00:00:00', 'allowed', 'f59ee39aa7b3273de9c91000b22b8cd4', '0000-00-00 00:00:00'),
-(16, 'Admin', 'admin@sdmcet.ml', 'admin', '21232f297a57a5a743894a0e4a801fc3', 1234567891, 'Male', 'CSE', 'images.jpg', '1916-09-13 00:00:00', 'allowed', '209284cb7e86973669e1ef9b0053492af7', '2018-03-17 17:24:08');
+INSERT INTO `user` (`name`, `email`, `empid`, `pass`, `mobile`, `gender`, `branch`, `image`, `dob`, `status`, `forgot_password`, `last_login`) VALUES
+('Pradip Kumar Raushan', 'pradeepraushan@gmail.com', '2SD14CS076', '21232f297a57a5a743894a0e4a801fc3', 9035867192, 'Male', 'CSE', '09.Photo.jpg', '1995-11-23 00:00:00', 'allowed', 'f26eddcd0370a2335770e32c7953a74e', '2018-04-27 17:18:19'),
+('PRADIP KUMAR RAUSHAN', 'pradipkumarraushan@gmail.com', '2SD14CS078', '21232f297a57a5a743894a0e4a801fc3', 9035867192, 'Male', 'CSE', 'person.jpg', '1995-11-23 00:00:00', 'blocked', '9ad19e0842fa8c0dca728060bc086016', '2018-04-27 17:10:27'),
+('Pushpak Hegde', 'pushpakrhegde@gmail.com', '2SD16CS413', 'fe3a81650d7b756e7d2b59ea0406e802', 9742929719, 'Male', 'CSE', 'person.jpg', '1997-01-01 00:00:00', 'allowed', '17fd6190f43f7aedcd3d593140412a2954', '2018-04-27 11:12:54'),
+('Rahul', 'rahuldb2k18@gmail.com', '2SD15CS074', '21232f297a57a5a743894a0e4a801fc3', 8867673087, 'Male', 'CSE', 'person.jpg', '1996-01-01 00:00:00', 'blocked', 'e0c56dc5402f1f23650cc0584875a11dc8', '2018-04-27 11:38:32'),
+('Rohit Kumar', 'rksharma03225@gmail.com', '2SD14CS092', '21232f297a57a5a743894a0e4a801fc3', 9738851325, 'Male', 'CSE', 'Rohit.jpg', '1996-06-15 00:00:00', 'allowed', 'f59ee39aa7b3273de9c91000b22b8cd4', '2018-04-27 11:58:31');
 
 -- --------------------------------------------------------
 
@@ -202,7 +197,6 @@ INSERT INTO `user` (`id`, `name`, `email`, `empid`, `pass`, `mobile`, `gender`, 
 --
 
 CREATE TABLE `weightage` (
-  `weightage_id` int(11) NOT NULL,
   `particular_id` int(11) NOT NULL,
   `criteria_id` int(11) NOT NULL,
   `weightage_value` float NOT NULL
@@ -212,33 +206,33 @@ CREATE TABLE `weightage` (
 -- Dumping data for table `weightage`
 --
 
-INSERT INTO `weightage` (`weightage_id`, `particular_id`, `criteria_id`, `weightage_value`) VALUES
-(1, 1, 1, 15),
-(2, 2, 1, 10),
-(3, 3, 1, 10),
-(4, 4, 1, 5),
-(5, 5, 2, 2),
-(6, 6, 2, 1),
-(7, 7, 2, 2),
-(8, 8, 2, 2),
-(9, 9, 2, 2),
-(10, 10, 2, 1),
-(11, 11, 3, 5),
-(12, 12, 3, 9),
-(13, 13, 3, 6),
-(14, 14, 3, 1),
-(15, 15, 3, 9),
-(16, 16, 4, 3),
-(17, 17, 4, 2),
-(18, 18, 4, 1),
-(19, 19, 4, 4),
-(20, 20, 5, 1),
-(21, 21, 5, 1),
-(22, 22, 5, 1),
-(23, 23, 5, 0.5),
-(24, 24, 5, 1),
-(25, 25, 5, 0.5),
-(26, 26, 6, 5);
+INSERT INTO `weightage` (`particular_id`, `criteria_id`, `weightage_value`) VALUES
+(1, 1, 15),
+(2, 1, 10),
+(3, 1, 10),
+(4, 1, 5),
+(5, 2, 2),
+(6, 2, 1),
+(7, 2, 2),
+(8, 2, 2),
+(9, 2, 2),
+(10, 2, 1),
+(11, 3, 5),
+(12, 3, 9),
+(13, 3, 6),
+(14, 3, 1),
+(15, 3, 9),
+(16, 4, 3),
+(17, 4, 2),
+(18, 4, 1),
+(19, 4, 4),
+(20, 5, 1),
+(21, 5, 1),
+(22, 5, 1),
+(23, 5, 0.5),
+(24, 5, 1),
+(25, 5, 0.5),
+(26, 6, 5);
 
 --
 -- Indexes for dumped tables
@@ -260,10 +254,9 @@ ALTER TABLE `criteria`
 -- Indexes for table `facultyeval`
 --
 ALTER TABLE `facultyeval`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`email_id`,`particular_id`,`criteria_id`),
   ADD KEY `fk_part` (`particular_id`),
-  ADD KEY `fk_crit` (`criteria_id`),
-  ADD KEY `fk_userid` (`fk_userid`) USING BTREE;
+  ADD KEY `fk_crit` (`criteria_id`);
 
 --
 -- Indexes for table `notice`
@@ -275,22 +268,20 @@ ALTER TABLE `notice`
 -- Indexes for table `particular`
 --
 ALTER TABLE `particular`
-  ADD PRIMARY KEY (`particular_id`),
+  ADD PRIMARY KEY (`particular_id`,`criteria_id`),
   ADD KEY `fk_criteria` (`criteria_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
-ALTER TABLE `user` ADD FULLTEXT KEY `name` (`name`);
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indexes for table `weightage`
 --
 ALTER TABLE `weightage`
-  ADD PRIMARY KEY (`weightage_id`),
+  ADD PRIMARY KEY (`particular_id`,`criteria_id`),
   ADD KEY `fk_particular` (`particular_id`),
   ADD KEY `fk_criteria_id` (`criteria_id`);
 
@@ -305,22 +296,10 @@ ALTER TABLE `admin`
   MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `facultyeval`
---
-ALTER TABLE `facultyeval`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -330,22 +309,22 @@ ALTER TABLE `user`
 -- Constraints for table `facultyeval`
 --
 ALTER TABLE `facultyeval`
-  ADD CONSTRAINT `fk_crit` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`criteria_id`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_part` FOREIGN KEY (`particular_id`) REFERENCES `particular` (`particular_id`) ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_userid` FOREIGN KEY (`fk_userid`) REFERENCES `user` (`id`) ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_crit` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`criteria_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_email` FOREIGN KEY (`email_id`) REFERENCES `user` (`email`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_part` FOREIGN KEY (`particular_id`) REFERENCES `particular` (`particular_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `particular`
 --
 ALTER TABLE `particular`
-  ADD CONSTRAINT `fk_criteria` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`criteria_id`) ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_criteria` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`criteria_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `weightage`
 --
 ALTER TABLE `weightage`
-  ADD CONSTRAINT `fk_criteria_id` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`criteria_id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_particular` FOREIGN KEY (`particular_id`) REFERENCES `particular` (`particular_id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_criteria_id` FOREIGN KEY (`criteria_id`) REFERENCES `criteria` (`criteria_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_particular` FOREIGN KEY (`particular_id`) REFERENCES `particular` (`particular_id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

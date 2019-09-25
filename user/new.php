@@ -121,15 +121,9 @@ else
 
 			<tr >
 			<td>
+    <?php if(!empty($success_message)) { ?><div align="center" style="font-weight: bold;color:green;font-size: 25px;"><?php echo $success_message ?> </div><?php } ?>
 
-                <?php if(!empty($success_message)) { ?><div align="center" style="font-weight: bold;color:green;font-size: 25px;"><?php echo '<script type="text/javascript">alert("' .$success_message . '")</script>'; ?> </div><?php } ?>
-
-               <?php if(!empty($error_message)) { ?><div align="center" style="font-weight: bold;color:red;font-size: 25px;"><?php echo '<script type="text/javascript">alert("' .$error_message . '")</script>'; ?> </div><?php } ?>
-
-<!--
-    <?php if(!empty($success_message)) { ?><div align="center" style="font-weight: bold;color:green;font-size: 25px;"><?php echo $success_message ?> </div><?php } ?> 
-
-    <?php if(isset($error_message)) { ?> <div align="center" style="font-weight: bold;color:red;font-size: 25px;"><?php echo $error_message; ?></div> <?php } ?>  -->
+    <?php if(isset($error_message)) { ?> <div align="center" style="font-weight: bold;color:red;font-size: 25px;"><?php echo $error_message; ?></div> <?php } ?>
 						</td>
                 </tr>
   <!-- =====================================Printing User's Name And His Branch ================================================= -->
