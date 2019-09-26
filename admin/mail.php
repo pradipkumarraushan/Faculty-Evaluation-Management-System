@@ -36,9 +36,17 @@ $mail->Username = "ENTER YOUR EMAIL ID";
 $mail->Password = "ENTER YOUR PASSWORD";
 $mail->SMTPSecure = "tls";
 $mail->Port = 587;// Enter  port number 
+
+$mail->ClearReplyTos();
+$mail->addReplyTo("ENTER YOUR EMAIL ID", $_POST['name']);
+
+$mail->SetFrom("ENTER YOUR EMAIL ID", $_POST['name']);
+/*  
 $mail->From = "ENTER YOUR EMAIL ID";
 $mail->FromName =  " ".$_POST['name']." ";
 
+======> instead of two lines i Used one line  =>>>> $mail->SetFrom("ENTER YOUR EMAIL ID", $_POST['name']); 
+*/
 $mail->addAddress($_POST["email"]); 
 
 /*
@@ -247,7 +255,7 @@ $mail->MsgHTML($body);
  }
 }}
 ?>
-<script src="http://pradip.epizy.com/ckeditor_4.8.0_full/ckeditor/ckeditor.js"></script>
+<script src="../js/ckeditor_4.8.0_full/ckeditor/ckeditor.js"></script>
 
 <body onLoad="setInterval('tt()',1000)">
 
