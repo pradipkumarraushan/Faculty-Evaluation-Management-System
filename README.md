@@ -37,6 +37,8 @@ Step 4: Create table or import database file using import option
 4.In your web browser, Type http://localhost/project/index.php You will see the home-page of this PROJECT 
 
 #Some Snapshots :
+DataBase Design
+![Image of Database](https://github.com/pradipkumarraushan/Faculty-Evaluation-Management-System/blob/master/DATABASE/Database%20Design.JPG)
 
 HomePage:
 
