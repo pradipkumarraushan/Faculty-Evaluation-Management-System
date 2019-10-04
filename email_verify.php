@@ -13,7 +13,7 @@ if (isset($_GET['email'], $_GET['id']))
     if ($r > 0)
     {
         
-        $sql = mysqli_query($conn, "SELECT * FROM user WHERE email='$email' AND  forgot_password ='$id'");
+        $sql = mysqli_query($conn, "SELECT * FROM user WHERE email='$email' AND  forgot_password ='$id' AND status='allowed'");
         $r   = mysqli_num_rows($sql);
         if ($r > 0)
         {
@@ -35,7 +35,7 @@ if (isset($_GET['email'], $_GET['id']))
         else
         {
             echo '<script language="javascript">
-                 alert("Email Verification Failed / Link Expired !!");
+                 alert("Email Verification Failed.\n May be due to the following reason\nLink Expired or\nYou are blocked by Admin.");
                  </script>';
             
         }
