@@ -38,6 +38,7 @@ Step 4: Create table or import database file using import option
 
 #Some Snapshots :
 DataBase Design
+
 ![Image of Database](https://github.com/pradipkumarraushan/Faculty-Evaluation-Management-System/blob/master/DATABASE/Database%20Design.JPG)
 
 HomePage:
