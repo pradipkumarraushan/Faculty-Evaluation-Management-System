@@ -89,26 +89,14 @@ session_start();
     <li><a href="index.php"><span class="glyphicon glyphicon-home"></span> HOME</a></li>
 
       
-
-	  
-
 	  <li><a href="index.php?option=about"><span class="glyphicon glyphicon-user"></span> About</a></li>
 
-   
-
-   
-
-	
 
 	<li><a href="index.php?option=contact"><span class="glyphicon glyphicon-phone"></span>Contact</a></li>
 
 	
 
 	</ul>
-
-
-
-
 
 <ul class="nav navbar-nav navbar-right">
 
@@ -141,24 +129,6 @@ session_start();
 <img style="padding-bottom:10px; margin-left: 3% ; width:70px;height:85px; " src='images/sdmcet.png' alt='SDMCET'><b style="color: red;font-size: 15px">SDM College of Engineering and Technology  Dharwad, Karnataka 580002</b></a>
 
 <b style="margin-left: 4%;font-size: 50px">| </b><b style="margin-left: 3%;font-size: 25px"> Faculty Evaluation Management System</b>
-
-
-
-			        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <div class="container-fluid">
 
@@ -336,6 +306,11 @@ session_start();
 
 			}
 
+      else if($opt=="resend-email-verification")
+      {
+      include('resend-email-verification_link.php');
+      }
+
 		}
 
 		else
@@ -351,21 +326,9 @@ session_start();
 		}
 
 		?>
-
-		
-
-		
-
-		
-
-		
-
 		</div>
 
 	<!-- container -->
-
-		
-
 		<div class="col-sm-4">
 
   <div class="panel panel-default">
@@ -379,9 +342,6 @@ session_start();
   </div>
 
 </div>
-
-
-
   <div class="panel panel-default">
 
 <div class="panel-heading">Page View</div>
@@ -389,29 +349,13 @@ session_start();
   <div class="panel-body">
 
 <script type="text/javascript" src="//rf.revolvermaps.com/0/0/6.js?i=5eznm6yqt2r&amp;m=6&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=0" async="async"></script>
-
-               
-
   </div>
 
 </div>
-
-
-
-		</div>
-
 	</div>
 
-
-
+	</div>
 </div>
-
-
-
-
-
-
-
 <br/>
 
 <br/>
@@ -419,72 +363,16 @@ session_start();
 <br/>
 
 <br/>
-
-
-
-
-
 <!-- footer-->
-
-
-
-
-
-
-
       <nav class="navbar navbar-inverse navbar-bottom" style="background:black">
-
-
-
   <div class="container">
-
-
-
-  
-
-
-
-  <ul class="nav navbar-nav navbar-left">
-
-     
-
-    <li><a href="http://pradip.epizy.com/">Developed by  PRADIP KUMAR RAUSHAN</a></li>
-
-
-
-     
-
-
-
-      
-
-
-
-  </ul>
-
-
-
+<ul class="nav navbar-nav navbar-left">
+<li><a href="http://pradip.epizy.com/">Developed by  PRADIP KUMAR RAUSHAN</a></li>
+ </ul>
 <ul class="nav navbar-nav navbar-right">
 <li><a href="">Copyright © <script>document.write(new Date().getFullYear());</script> - Faculty Evaluation Management System - All Rights Reserved </a> </li> 
-<li><script id="_wauvmb">var _wau = _wau || []; _wau.push(["small", "f1oy2rnu8b", "vmb"]);</script><script async src="//waust.at/s.js"></script> </li>
 </ul> 
-
-
-
 </div>
-
-
-
 </nav>
-
-
-<script>var clicky_site_ids = clicky_site_ids || []; clicky_site_ids.push(101205423);</script>
-<script async src="//static.getclicky.com/js"></script>
-
-
-
   </body>
-
-
-
 </html>

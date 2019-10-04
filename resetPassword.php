@@ -1,75 +1,77 @@
 <?php
-    require_once 'connection.php';
-    if(isset($_POST["reset-password"]))
+require_once 'connection.php';
+if (isset($_POST["reset-password"]))
+{
+    $token = bin2hex(random_bytes(16));
+    if (@$_GET["email"] == "" || @$_GET["id"] == "")
     {
-      $token = bin2hex(random_bytes(16));
-     if($_GET["email"]=="" || $_GET["id"]=="")
-
-       {
-      $error_message = "Failed : <br>Don't Modify Url  !!";
-      }
+        $error_message = "Failed : <br>Don't Modify Url  !!";
+    }
     else
     {
-        
-
-      $email = trim($_GET["email"]);
-       $id =  trim($_GET["id"]);
-       // Validate e-mail
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) 
-
+        $email = trim($_GET["email"]);
+        $id    = trim($_GET["id"]);
+        // Validate e-mail
+        if (filter_var($email, FILTER_VALIDATE_EMAIL))
         {
-         $email = mysqli_real_escape_string($conn, $email);
-        $id  = mysqli_real_escape_string($conn, $id );
-         $sql=mysqli_query($conn,"SELECT * from user where email='$email' and  forgot_password ='$id'"); //Checking Is user Allowed or not 
-         $r=mysqli_num_rows($sql);
-       if($r==true)
-       { 
-        
-        
-        $password = ($_POST["password"]);
-        
-        $confirmPassword = ($_POST["confirmPassword"]);
-        $password = mysqli_real_escape_string($conn,$password);
-        $confirmPassword = mysqli_real_escape_string($conn,$confirmPassword);
-       
-        if($password !="" && $confirmPassword !="") // check for null
-        {
-          
-         	if($password == $confirmPassword)
-         	{
-             
-             $password = md5($password);
-            $sql=mysqli_query($conn,"UPDATE user set pass= '$password'  where email= '$email' and forgot_password ='$id' ");
-            $success_message = "Password is updated successfully.<br>Now you are redirecting";
-            $sql=mysqli_query($conn,"UPDATE user set forgot_password = '$token'  where email= '$email' ");//After Updating Password changing id to prevent user
-            header("Refresh:6; url=index.php"); //Refresh:6;  redirect in 3 sec
-
-         	}
-         	else{
-
-            $error_message = "Failed : Password not updated (confirm Password Mismatch)";
-         	    }
-            
+            $email = mysqli_real_escape_string($conn, $email);
+            $id    = mysqli_real_escape_string($conn, $id);
+            $sql   = mysqli_query($conn, "SELECT * from user where email='$email' and  forgot_password ='$id'"); //Checking Is user Allowed or not 
+            $r     = mysqli_num_rows($sql);
+            if ($r == true)
+            {
+                
+                
+                $password = ($_POST["password"]);
+                
+                $confirmPassword = ($_POST["confirmPassword"]);
+                $password        = mysqli_real_escape_string($conn, $password);
+                $confirmPassword = mysqli_real_escape_string($conn, $confirmPassword);
+                
+                if ($password != "" && $confirmPassword != "") // check for null
+                {
+                    
+                    if ($password == $confirmPassword)
+                    {
+                        date_default_timezone_set("Asia/Kolkata");
+                        $login_time       = date('Y-m-d H:i:s');
+                        $password         = md5($password);
+                        $sql              = mysqli_query($conn, "UPDATE user set pass= '$password',last_login = '$login_time'  where email= '$email' and forgot_password ='$id' ");
+                        $success_message  = "Password is updated successfully.";
+                        $sql              = mysqli_query($conn, "UPDATE user set forgot_password = '$token'  where email= '$email' "); //After Updating Password changing id to prevent user
+                        $_SESSION['user'] = $email;
+                        echo '<SCRIPT type="text/javascript"> //not showing me this
+        alert("Password Changed successfully.\nNow you are redirecting to Dashboard");
+        window.location.replace("https://localhost/Faculty-Evaluation-Management-System/user/index.php");
+    </SCRIPT>';
+                        
+                    }
+                    else
+                    {
+                        
+                        $error_message = "Failed : Password not updated (confirm Password Mismatch)";
+                    }
+                    
+                }
+                
+                else
+                {
+                    $error_message = "Failed : Fill all field First";
+                }
+                
+            }
+            else
+            {
+                
+                $error_message = "Failed : Your forgot password Link Expired !!";
+            }
         }
-               
-           else 
-           {
-            $error_message = "Failed : Fill all field First";   
-           }
-          
-          }
-          else 
-          {
-
-           $error_message = "Failed : Your forgot password Link Expired !!";
-           }
-        }
-      else
+        else
         {
-        $error_message = "Failed : <br>Invalid Email Id Format !!";
-         }
-      }
-
+            $error_message = "Failed : <br>Invalid Email Id Format !!";
+        }
+    }
+    
 }
 ?>        
 <h2>Reset Password</h2>
@@ -77,15 +79,27 @@
   
   <div class="row">
     <div class="col-sm-4"></div>
-                <?php if(!empty($success_message)) { ?>
-                <div class="col-sm-4" style="font-weight: bold;color:green;"><?php echo $success_message ?></div>
-                <?php } ?>
-                <?php if(!empty($error_message)) { ?>
-                <div class="col-sm-4" style="font-weight: bold;color:red;"><?php echo $error_message ?></div>
-                <?php } ?>
-
-    <div class="col-sm-4"><?php echo @$err;?></div>
-  </div>
+                <?php
+if (!empty($success_message))
+{
+?>
+               <div class="col-sm-4" style="font-weight: bold;color:green;"><?php
+    echo $success_message;
+?></div>
+                <?php
+}
+?>
+               <?php
+if (!empty($error_message))
+{
+?>
+               <div class="col-sm-4" style="font-weight: bold;color:red;"><?php
+    echo $error_message;
+?></div>
+                <?php
+}
+?>
+ </div>
   
   
   
@@ -109,4 +123,4 @@
     </div>
 
         </div>
-</form> 
+</form>

@@ -16,24 +16,31 @@ if(isset($save))
 
          
         
-
-$sql=mysqli_query($conn,"SELECT * from user where email='$email' and pass='$password' ");//Checking Login Credential
+//Checking Login Credential
+$sql=mysqli_query($conn,"SELECT * from user where email='$email' and pass='$password' ");
 
 $r=mysqli_num_rows($sql);
 
 if($r==true)
 { 
+   //Checkin email verified by client or not 
+ $sql=mysqli_query($conn,"SELECT * from user where email='$email' and email_verified='1' ");
 
-$sql=mysqli_query($conn,"SELECT * from user where email='$email' and pass='$password' and status='allowed' "); //Checking Is user Allowed or not 
+$r=mysqli_num_rows($sql);
+
+if($r==true)
+{ 
+  
+//Checking Is user Allowed by Admin or not 
+$sql=mysqli_query($conn,"SELECT * from user where email='$email' and pass='$password' and status='allowed' "); 
 $r=mysqli_num_rows($sql);
 if($r==true)
 {
 
-	              date_default_timezone_set("Asia/Kolkata");
-	              $login_time=date('Y-m-d H:i:s');
+	                 date_default_timezone_set("Asia/Kolkata");
+	                $login_time=date('Y-m-d H:i:s');
                      mysqli_query($conn,"UPDATE user SET last_login = '$login_time' WHERE email ='$email'");
-
-$_SESSION['user']=$email;
+                    $_SESSION['user']=$email;
                
              
              
@@ -43,8 +50,15 @@ header("Location:user\index.php");
 else 
 {
 
-	$error_message="ACCOUNT PENDING: Your account is currently not active. An administrator needs to activate your account before you can login.";
+	$error_message='ACCOUNT BLOCKED:<br><p style="color:blue">Your account is currently bloked by an administrator.<br>
+	                You can write an email to Admin, if it is done by mistake.</p>';
 }
+}else{
+      $error_message='Please Verify Your Email. OR,<br>
+      <b><a style="color: blue" href="index.php?option=resend-email-verification">Resend Email Verification Link</a></b>
+                     ';
+
+     }
 
 }
 else
@@ -109,20 +123,6 @@ $error_message="Invalid login Credential";
 	<b><a style="color: red" href="index.php?option=forgot_password">Forgot Password ? Click here!</a></b>
 		
 		</div>
-		<?php 
-		@$opt=$_GET['option'];
 		
-		if($opt!="")
-		{
-			if($opt=="forgot_password")
-			{
-			include('forgotPassword.php');
-			}
-		}
-			else
-		{
-		
-		}
-		?>
 	</div>
 </form>	

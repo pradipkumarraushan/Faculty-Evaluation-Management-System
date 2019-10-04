@@ -1,8 +1,6 @@
 <?php
 require_once 'vendor/autoload.php';
 define("PROJECT_NAME", "http://localhost/Faculty-Evaluation-Management-System/");
-$query=mysqli_query($conn,"SELECT name, email ,forgot_password  FROM user WHERE email = '$e'");
-$user= mysqli_fetch_assoc($query);
 $mail = new PHPMailer\PHPMailer\PHPMailer;
 //Enable SMTP debug mode
 $mail->SMTPDebug = 0;
@@ -20,12 +18,10 @@ $mail->Port = 587;
 
 $mail->From = "Enter Your Email ID";//EDIT
 $mail->FromName = "Faculty Evaluation Management System [Team]";//EDIT
-$mail->addAddress($_POST["e"]);
+$mail->addAddress($_POST["user_email"]);
 $mail->isHTML(true);
-
-$mail->Subject = "Registration Successful";
-
-$body ='<!DOCTYPE html>
+$mail->Subject = "Email Verificaion";
+$body = '<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -234,12 +230,14 @@ footer {
 
 $mail->MsgHTML($body);
 
+
         if(!$mail->send()) {
             $error_message = "Mailer Error : ". $mail->ErrorInfo;
         } else {
-            $success_message = "A Confirmation email has been sent to you => ".$user["email"]." ";
+            $success_message = "Check your email inbox , and click the link in the email you received to verify email.<br> 
+            Note :- [Sometimes you will get email in Spam Folder] .";
 
-             //header("Refresh:10; url=index.php");//Refresh:6;
+             //header("Refresh:10; url=index.php");
         }
         
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 25, 2019 at 04:23 PM
--- Server version: 10.1.29-MariaDB
--- PHP Version: 7.2.0
+-- Host: 127.0.0.1:3306
+-- Generation Time: Oct 04, 2019 at 11:43 PM
+-- Server version: 5.7.26
+-- PHP Version: 7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -28,19 +28,21 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE `admin` (
-  `admin_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `pass` varchar(50) NOT NULL,
-  `last_login` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `last_login` datetime NOT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`admin_id`, `user`, `pass`, `last_login`) VALUES
-(1, 'admin@admin.com', 'admin', '2019-09-25 18:27:12');
+(1, 'admin@admin.com', 'admin', '2019-10-02 23:52:41');
 
 -- --------------------------------------------------------
 
@@ -48,9 +50,11 @@ INSERT INTO `admin` (`admin_id`, `user`, `pass`, `last_login`) VALUES
 -- Table structure for table `criteria`
 --
 
-CREATE TABLE `criteria` (
+DROP TABLE IF EXISTS `criteria`;
+CREATE TABLE IF NOT EXISTS `criteria` (
   `criteria_id` int(11) NOT NULL,
-  `criteria_name` varchar(200) NOT NULL
+  `criteria_name` varchar(200) NOT NULL,
+  PRIMARY KEY (`criteria_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -71,7 +75,8 @@ INSERT INTO `criteria` (`criteria_id`, `criteria_name`) VALUES
 -- Table structure for table `facultyeval`
 --
 
-CREATE TABLE `facultyeval` (
+DROP TABLE IF EXISTS `facultyeval`;
+CREATE TABLE IF NOT EXISTS `facultyeval` (
   `email_id` varchar(200) NOT NULL,
   `actual_score` float NOT NULL,
   `reduced_score` float NOT NULL,
@@ -79,7 +84,10 @@ CREATE TABLE `facultyeval` (
   `wx` float NOT NULL,
   `image` varchar(200) NOT NULL,
   `particular_id` int(11) NOT NULL,
-  `criteria_id` int(11) NOT NULL
+  `criteria_id` int(11) NOT NULL,
+  PRIMARY KEY (`email_id`,`particular_id`,`criteria_id`),
+  KEY `fk_part` (`particular_id`),
+  KEY `fk_crit` (`criteria_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -88,12 +96,14 @@ CREATE TABLE `facultyeval` (
 -- Table structure for table `notice`
 --
 
-CREATE TABLE `notice` (
-  `notice_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `notice`;
+CREATE TABLE IF NOT EXISTS `notice` (
+  `notice_id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `subject` varchar(100) NOT NULL,
   `Description` text NOT NULL,
-  `Date` datetime NOT NULL
+  `Date` datetime NOT NULL,
+  PRIMARY KEY (`notice_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -102,11 +112,14 @@ CREATE TABLE `notice` (
 -- Table structure for table `particular`
 --
 
-CREATE TABLE `particular` (
+DROP TABLE IF EXISTS `particular`;
+CREATE TABLE IF NOT EXISTS `particular` (
   `particular_id` int(11) NOT NULL,
   `criteria_id` int(11) NOT NULL,
   `particular_text` longtext NOT NULL,
-  `particular_value` float NOT NULL
+  `particular_value` float NOT NULL,
+  PRIMARY KEY (`particular_id`,`criteria_id`),
+  KEY `fk_criteria` (`criteria_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -147,7 +160,8 @@ INSERT INTO `particular` (`particular_id`, `criteria_id`, `particular_text`, `pa
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `empid` varchar(200) NOT NULL,
@@ -159,7 +173,9 @@ CREATE TABLE `user` (
   `dob` datetime NOT NULL,
   `status` varchar(200) NOT NULL,
   `forgot_password` varchar(400) NOT NULL,
-  `last_login` datetime NOT NULL
+  `last_login` datetime NOT NULL,
+  `email_verified` tinyint(1) NOT NULL,
+  PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -168,10 +184,14 @@ CREATE TABLE `user` (
 -- Table structure for table `weightage`
 --
 
-CREATE TABLE `weightage` (
+DROP TABLE IF EXISTS `weightage`;
+CREATE TABLE IF NOT EXISTS `weightage` (
   `particular_id` int(11) NOT NULL,
   `criteria_id` int(11) NOT NULL,
-  `weightage_value` float NOT NULL
+  `weightage_value` float NOT NULL,
+  PRIMARY KEY (`particular_id`,`criteria_id`),
+  KEY `fk_particular` (`particular_id`),
+  KEY `fk_criteria_id` (`criteria_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -205,73 +225,6 @@ INSERT INTO `weightage` (`particular_id`, `criteria_id`, `weightage_value`) VALU
 (24, 5, 1),
 (25, 5, 0.5),
 (26, 6, 5);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`admin_id`);
-
---
--- Indexes for table `criteria`
---
-ALTER TABLE `criteria`
-  ADD PRIMARY KEY (`criteria_id`);
-
---
--- Indexes for table `facultyeval`
---
-ALTER TABLE `facultyeval`
-  ADD PRIMARY KEY (`email_id`,`particular_id`,`criteria_id`),
-  ADD KEY `fk_part` (`particular_id`),
-  ADD KEY `fk_crit` (`criteria_id`);
-
---
--- Indexes for table `notice`
---
-ALTER TABLE `notice`
-  ADD PRIMARY KEY (`notice_id`);
-
---
--- Indexes for table `particular`
---
-ALTER TABLE `particular`
-  ADD PRIMARY KEY (`particular_id`,`criteria_id`),
-  ADD KEY `fk_criteria` (`criteria_id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`email`);
-
---
--- Indexes for table `weightage`
---
-ALTER TABLE `weightage`
-  ADD PRIMARY KEY (`particular_id`,`criteria_id`),
-  ADD KEY `fk_particular` (`particular_id`),
-  ADD KEY `fk_criteria_id` (`criteria_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `notice`
---
-ALTER TABLE `notice`
-  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

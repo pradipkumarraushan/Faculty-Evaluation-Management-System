@@ -130,7 +130,7 @@ $pass=md5($p);
 
  
 
-$query="INSERT into user values('$n','$e','$empid','$pass','$mob','$gen','$branch','$imageName','$dob','blocked','$token','$signup_time')";
+$query="INSERT into user values('$n','$e','$empid','$pass','$mob','$gen','$branch','$imageName','$dob','allowed','$token','$signup_time','0')";
 
 mysqli_query($conn,$query);
 
@@ -149,12 +149,6 @@ mysqli_query($conn,$query);
 
 
 $success ="<font color='blue'>Your Registration is successful !!</font><br><b><font color='red'>Note:Please Check Your Spam Folder too .</font></b>";
-
-
-
-$query=mysqli_query($conn,"SELECT name, email  FROM user WHERE email = '$e'");
-
-$user=mysqli_fetch_all($query,MYSQLI_BOTH);
 
  require_once ("registration-success-mail.php");
 

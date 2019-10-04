@@ -20,12 +20,67 @@ $mail->From = "Enter Your Email ID";//EDIT
 $mail->FromName = "Faculty Evaluation Management System [Team]";//EDIT
 $mail->addAddress($_POST["user_email"]);
 $mail->isHTML(true);
-
 $mail->Subject = "Forgot Password Recovery";
-$body = "<div>"."<h2>Faculty Evaluation Management System</h2>"."<p>Hello,</p>".$user[0]["name"]."<br><br><p>Click here to recover your password<br>
-    <a href='".PROJECT_NAME."index.php?option=reset_password&email=".$user[0]["email"]."&id=".$user[0]["forgot_password"]." '> ".PROJECT_NAME.
-        "index.php?option=reset_password&email=".$user[0]["email"]."&id=".$user[0]["forgot_password"]."</a><br><br></p></div>";
-$body .= '<table id="zs-output-sig" style="font-family: Arial,Helvetica,sans-serif; line-height: 0px; font-size: 1px; padding: 0px; border-spacing: 0px; margin: 0px; border-collapse: collapse; width: 550px;" border="0" cellspacing="0" cellpadding="0">
+$body = '<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 30px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+article {
+  float: left;
+  padding: 20px;
+  width: 100%;
+  background-color: #f1f1f1;
+  height: 300px; 
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #cceeff;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<header>
+  <h2>Faculty Evaluation Management [Team]</h2>
+</header>
+<section>
+
+  <article>
+    <h1>Hello '.$user["name"].' ,<br></h1>
+    <p>Click on the link given below to recover your password<br><br>
+    <a href="'.PROJECT_NAME.'index.php?option=reset_password&email='.$user["email"].'&id='.$user["forgot_password"].'">
+             '.PROJECT_NAME.'index.php?option=reset_password&email='.$user["email"].'&id='.$user["forgot_password"].'</a></p>
+  </article>
+</section>
+
+<footer>
+<table id="zs-output-sig" style="font-family: Arial,Helvetica,sans-serif; line-height: 0px; font-size: 1px; padding: 0px; border-spacing: 0px; margin: 0px; border-collapse: collapse; width: 550px;" border="0" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
 <td>
@@ -44,7 +99,7 @@ $body .= '<table id="zs-output-sig" style="font-family: Arial,Helvetica,sans-ser
 <table style="font-family: Arial,Helvetica,sans-serif; line-height: 0px; font-size: 1px; padding: 0px; border-spacing: 0px; margin: 0px; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="border-collapse: collapse; font-family: Calibri, Helvetica, sans-serif; font-size: 15.0px; font-style: normal; line-height: 17px; font-weight: normal; color: #282828;"><strong style="font-family: Calibri, Helvetica, sans-serif; font-size: 15.0px; font-style: normal; line-height: 17px; color:	#FF0000; display: inline;">Thanks & Regards,</strong></td>
+<td style="border-collapse: collapse; font-family: Calibri, Helvetica, sans-serif; font-size: 15.0px; font-style: normal; line-height: 17px; font-weight: normal; color: #282828;"><strong style="font-family: Calibri, Helvetica, sans-serif; font-size: 15.0px; font-style: normal; line-height: 17px; color: #FF0000; display: inline;">Thanks & Regards,</strong></td>
 </tr>
 <tr>
 <td style="border-collapse: collapse; padding-bottom: 7px; height: 7px;">&nbsp;</td>
@@ -102,13 +157,7 @@ $body .= '<table id="zs-output-sig" style="font-family: Arial,Helvetica,sans-ser
 </tr>
 <tr>
 <td style="border-collapse: collapse; font-family: Calibri, Helvetica, sans-serif; font-size: 15.0px; font-style: normal; line-height: 17px; font-weight: normal; color: #282828;">
-
-
-	<span style="font-family: Calibri, Helvetica, sans-serif; font-size: 15.0px; font-style: normal; line-height: 17px; font-weight: normal; color: #282828; display: inline;">
-
-
-
-<a style="text-decoration: none;" href="http://pradip.epizy.com">pradip.epizy.com</a></span>
+<span style="font-family: Calibri, Helvetica, sans-serif; font-size: 15.0px; font-style: normal; line-height: 17px; font-weight: normal; color: #282828; display: inline;"><a style="text-decoration: none;" href="http://pradip.epizy.com">pradip.epizy.com</a></span>
 </td>
 </tr>
 <tr>
@@ -173,7 +222,11 @@ $body .= '<table id="zs-output-sig" style="font-family: Arial,Helvetica,sans-ser
 <td style="border-collapse: collapse;">&nbsp;</td>
 </tr>
 </tbody>
-</table>';
+</table>
+</footer>
+
+</body>
+</html>';
 
 $mail->MsgHTML($body);
 
@@ -181,10 +234,10 @@ $mail->MsgHTML($body);
         if(!$mail->send()) {
             $error_message = "Mailer Error : ". $mail->ErrorInfo;
         } else {
-            $success_message = "Check your email inbox , and click the link in the email you received to reset your password. 
+            $success_message = "Check your email inbox , and click the link in the email you received to reset your password.<br> 
             Note :- [Sometimes you will get email in Spam Folder] .";
 
-             header("Refresh:10; url=index.php");
+             //header("Refresh:10; url=index.php");
         }
         
 
