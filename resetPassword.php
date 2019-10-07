@@ -36,14 +36,25 @@ if (isset($_POST["reset-password"]))
                         date_default_timezone_set("Asia/Kolkata");
                         $login_time       = date('Y-m-d H:i:s');
                         $password         = md5($password);
-                        $sql              = mysqli_query($conn, "UPDATE user set pass= '$password',last_login = '$login_time'  where email= '$email' and forgot_password ='$id' ");
+                        $sql              = mysqli_query($conn, "UPDATE user SET pass = '$password',last_login = '$login_time' WHERE email= '$email' AND forgot_password ='$id' ");
                         $success_message  = "Password is updated successfully.";
-                        $sql              = mysqli_query($conn, "UPDATE user set forgot_password = '$token'  where email= '$email' "); //After Updating Password changing id to prevent user
+                        $sql              = mysqli_query($conn, "UPDATE user SET forgot_password = '$token' WHERE email= '$email' "); //After Updating Password changing id to prevent user
+
+                        //Checking Is user Allowed or not for login
+                        $check = mysqli_query($conn, "SELECT * FROM user WHERE email='$email' AND status = 'allowed' AND email_verified = '1'"); 
+                        $row     = mysqli_num_rows($check);
+                      if ($row == true)
+                      {
+
                         $_SESSION['user'] = $email;
-                        echo '<SCRIPT type="text/javascript"> //not showing me this
-        alert("Password Changed successfully.\nNow you are redirecting to Dashboard");
-        window.location.replace("https://localhost/Faculty-Evaluation-Management-System/user/index.php");
-    </SCRIPT>';
+                        echo '<SCRIPT type="text/javascript">
+                        alert("Password Changed successfully.\nNow you are redirecting to Dashboard");
+                        window.location.replace("http://pradip-github.epizy.com/user/index.php");
+                        </SCRIPT>';
+                       }else{
+                            $success_message = "Password Changed successfully.<br>
+                            <font color='red'>But, Your account is currenty blocked.<br>Contact Admin</font>";
+                       }
                         
                     }
                     else
