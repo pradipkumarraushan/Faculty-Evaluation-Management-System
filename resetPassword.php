@@ -49,7 +49,7 @@ if (isset($_POST["reset-password"]))
                         $_SESSION['user'] = $email;
                         echo '<SCRIPT type="text/javascript">
                         alert("Password Changed successfully.\nNow you are redirecting to Dashboard");
-                        window.location.replace("http://pradip-github.epizy.com/user/index.php");
+                        window.location.replace("https://localhost/Faculty-Evaluation-Management-System/index.php");
                         </SCRIPT>';
                        }else{
                             $success_message = "Password Changed successfully.<br>
